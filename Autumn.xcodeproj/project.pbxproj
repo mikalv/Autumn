@@ -11,6 +11,8 @@
 		9451F2D31FBBE5130084A2FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D21FBBE5130084A2FD /* Assets.xcassets */; };
 		9451F2D61FBBE5130084A2FD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D41FBBE5130084A2FD /* MainMenu.xib */; };
 		9451F2D91FBBE5130084A2FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2D81FBBE5130084A2FD /* main.m */; };
+		9451F2E31FBC94410084A2FD /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E21FBC94410084A2FD /* Window.m */; };
+		9451F2E61FBCB2A70084A2FD /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E51FBCB2A70084A2FD /* App.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,11 @@
 		9451F2D71FBBE5130084A2FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9451F2D81FBBE5130084A2FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9451F2DA1FBBE5130084A2FD /* Autumn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autumn.entitlements; sourceTree = "<group>"; };
+		9451F2E01FBC15AF0084A2FD /* JS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JS.h; sourceTree = "<group>"; };
+		9451F2E11FBC94410084A2FD /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		9451F2E21FBC94410084A2FD /* Window.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
+		9451F2E41FBCB2A70084A2FD /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
+		9451F2E51FBCB2A70084A2FD /* App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +63,14 @@
 			children = (
 				9451F2CF1FBBE5130084A2FD /* AppDelegate.h */,
 				9451F2D01FBBE5130084A2FD /* AppDelegate.m */,
+				9451F2E11FBC94410084A2FD /* Window.h */,
+				9451F2E21FBC94410084A2FD /* Window.m */,
+				9451F2E41FBCB2A70084A2FD /* App.h */,
+				9451F2E51FBCB2A70084A2FD /* App.m */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D41FBBE5130084A2FD /* MainMenu.xib */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
+				9451F2E01FBC15AF0084A2FD /* JS.h */,
 				9451F2D81FBBE5130084A2FD /* main.m */,
 				9451F2DA1FBBE5130084A2FD /* Autumn.entitlements */,
 			);
@@ -135,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9451F2E31FBC94410084A2FD /* Window.m in Sources */,
+				9451F2E61FBCB2A70084A2FD /* App.m in Sources */,
 				9451F2D91FBBE5130084A2FD /* main.m in Sources */,
 				9451F2D11FBBE5130084A2FD /* AppDelegate.m in Sources */,
 			);
