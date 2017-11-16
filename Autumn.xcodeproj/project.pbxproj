@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		943B011A1FBDDC4600EA17A2 /* FnUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 943B01191FBDDC4600EA17A2 /* FnUtils.m */; };
 		9451F2D11FBBE5130084A2FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2D01FBBE5130084A2FD /* AppDelegate.m */; };
 		9451F2D31FBBE5130084A2FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D21FBBE5130084A2FD /* Assets.xcassets */; };
 		9451F2D61FBBE5130084A2FD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D41FBBE5130084A2FD /* MainMenu.xib */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		943B01181FBDDC4600EA17A2 /* FnUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FnUtils.h; sourceTree = "<group>"; };
+		943B01191FBDDC4600EA17A2 /* FnUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FnUtils.m; sourceTree = "<group>"; };
 		9451F2CC1FBBE5130084A2FD /* Autumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9451F2CF1FBBE5130084A2FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9451F2D01FBBE5130084A2FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				9451F2E21FBC94410084A2FD /* Window.m */,
 				9451F2E41FBCB2A70084A2FD /* App.h */,
 				9451F2E51FBCB2A70084A2FD /* App.m */,
+				943B01181FBDDC4600EA17A2 /* FnUtils.h */,
+				943B01191FBDDC4600EA17A2 /* FnUtils.m */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D41FBBE5130084A2FD /* MainMenu.xib */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9451F2E31FBC94410084A2FD /* Window.m in Sources */,
+				943B011A1FBDDC4600EA17A2 /* FnUtils.m in Sources */,
 				9451F2E61FBCB2A70084A2FD /* App.m in Sources */,
 				9451F2D91FBBE5130084A2FD /* main.m in Sources */,
 				9451F2D11FBBE5130084A2FD /* AppDelegate.m in Sources */,

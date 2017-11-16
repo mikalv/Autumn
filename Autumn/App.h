@@ -33,5 +33,6 @@ CLASS_START(App)
 - (pid_t) pid;
 - (NSString*) kind;
 - (BOOL) launchOrFocus:(NSString*)name;
+- (BOOL) activate:(BOOL)allWindows;
 
 CLASS_END(App)

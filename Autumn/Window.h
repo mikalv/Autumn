@@ -30,6 +30,7 @@ CLASS_START(Window)
 - (BOOL) unminimize;
 - (NSNumber*) isMinimized;
 - (NSNumber*) pid;
+- (BOOL) isVisible;
 - (BOOL) becomeMain;
 - (NSNumber*) windowID;
 - (App*) app;

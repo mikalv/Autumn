@@ -8,6 +8,9 @@
 
 #import "App.h"
 #import "Window.h"
+#import "FnUtils.h"
+
+/// Manipulate running applications.
 
 @implementation App {
     pid_t _pid;
@@ -74,6 +77,13 @@
         CFRelease(wins);
     }
     return returningWindows;
+}
+
+/// Returns only the app's windows that are visible.
+- (NSArray<Window*>*) visibleWindows {
+    return [FnUtils filter:[self allWindows] with:^BOOL(Window* win) {
+        return win.isVisible;
+    }];
 }
 
 // a few private methods for -activate
@@ -171,6 +181,17 @@
 /// Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
 - (BOOL) launchOrFocus:(NSString*)name {
     return [[NSWorkspace sharedWorkspace] launchApplication: name];
+}
+
+/// Tries to activate the app (make its key window focused) and returns whether it succeeded; if allwindows is true, all windows of the application are brought forward as well.
+- (BOOL) activate:(BOOL)allWindows {
+    if ([self isUnresponsive])
+        return false;
+    
+    Window* win = [self internal_focusedWindow];
+    return (win
+            ? ([win becomeMain] && [self internal_bringToFront:allWindows])
+            : [self internal_activate: allWindows]);
 }
 
 @end

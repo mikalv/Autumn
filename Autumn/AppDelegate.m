@@ -11,21 +11,26 @@
 #import "App.h"
 
 @interface AppDelegate ()
-
+@property NSStatusItem* item;
 @property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    NSStatusBar* bar = [NSStatusBar systemStatusBar];
+    _item = [bar statusItemWithLength: NSSquareStatusItemLength];
+    _item.image = [NSImage imageNamed:@"StatusIcon"];
+    
     JSVirtualMachine* vm = [[JSVirtualMachine alloc] init];
     JSContext* ctx = [[JSContext alloc] initWithVirtualMachine: vm];
     
     ctx[@"Window"] = [Window class];
+    ctx[@"App"] = [App class];
+    
     NSLog(@"%@", [ctx evaluateScript: @"Window.prototype.title"]);
     NSLog(@"%@", [ctx evaluateScript: @"Window"]);
     
-    ctx[@"App"] = [App class];
     NSLog(@"%@", [ctx evaluateScript: @"App.prototype.title"]);
     NSLog(@"%@", [ctx evaluateScript: @"App"]);
     NSLog(@"%@", [ctx evaluateScript: @"apps = App.runningApps(); null"]);
@@ -34,8 +39,11 @@
     NSLog(@"%@", [ctx evaluateScript: @"app = apps[apps.length - 1]"]);
     NSLog(@"%@", [ctx evaluateScript: @"app.title()"]);
     NSLog(@"%@", [ctx evaluateScript: @"App.prototype.title.bind(app)()"]);
-    
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"%@", [ctx evaluateScript: @"app.visibleWindows"]);
+        NSLog(@"%@", [ctx evaluateScript: @"app.visibleWindows()"]);
+        
         NSLog(@"%@", [ctx evaluateScript: @"win = app.mainWindow()"]);
         NSLog(@"%@", [ctx evaluateScript: @"win.title()"]);
         NSLog(@"%@", [ctx evaluateScript: @"Window.prototype.title.bind(win)()"]);

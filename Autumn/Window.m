@@ -8,6 +8,19 @@
 
 #import "Window.h"
 #import "App.h"
+#import "FnUtils.h"
+
+/// Functions for managing any window.
+///
+/// To get windows, see `Window.focusedWindow` and `Window.visibleWindows`.
+///
+/// To get window geometrical attributes, see `Window.{frame,size,topleft}`.
+///
+/// To move and resize windows, see `Window.set{frame,size,topleft}`.
+///
+/// It may be handy to get a window's app or screen via `Window.app` and `Window.screen`.
+///
+/// See the `Screen` class for detailed explanation of how Mjolnir uses window/screen coordinates.
 
 @implementation Window {
     AXUIElementRef _win;
@@ -44,6 +57,20 @@ static AXUIElementRef system_wide_element() {
     CFRelease(app);
     
     return (result == kAXErrorSuccess) ? [[Window alloc] initWithElement: win] : nil;
+}
+
+/// Returns all windows
++ (NSArray<Window*>*) allWindows {
+    return [FnUtils flatMap:[App runningApps] with:^NSArray*(App* app) {
+        return [app allWindows];
+    }];
+}
+
+/// Returns the window for the given id, or nil if it's an invalid id.
++ (Window*) windowForID:(NSNumber*)winid {
+    return [FnUtils findIn:[Window allWindows] where:^BOOL(Window* win) {
+        return [win.windowID isEqualToNumber: winid];
+    }];
 }
 
 - (id) getWindowProp:(NSString*)propType {
@@ -163,6 +190,12 @@ cleanup:
     return @(pid);
 }
 
+/// True if the app is not hidden and the window is not minimized.
+/// NOTE: some apps (e.g. in Adobe Creative Cloud) have literally-invisible windows and also like to put them very far offscreen; this method may return true for such windows.
+- (BOOL) isVisible {
+    return !self.app.isHidden && !self.isMinimized;
+}
+
 /// Make this window the main window of the given application; deos not implicitly focus the app.
 - (BOOL) becomeMain {
     return (AXUIElementSetAttributeValue(_win, (CFStringRef)NSAccessibilityMainAttribute, kCFBooleanTrue) == kAXErrorSuccess);
@@ -198,6 +231,20 @@ cleanup:
     NSNumber* pid = [self pid];
     if (!pid) return nil;
     return [App appForPid: [pid intValue]];
+}
+
+/// Get the frame of the window in absolute coordinates.
+- (NSRect) frame {
+    NSSize s = self.size;
+    NSPoint p = self.topLeft;
+    return NSMakeRect(p.x, p.y, s.width, s.height);
+}
+
+/// Set the frame of the window in absolute coordinates.
+- (void) setFrame:(NSRect)frame {
+    [self setSize: frame.size];
+    [self setTopLeft: frame.origin];
+    [self setSize: frame.size];
 }
 
 @end
