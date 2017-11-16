@@ -10,8 +10,6 @@
 #import "Window.h"
 #import "FnUtils.h"
 
-/// Manipulate running applications.
-
 @implementation App {
     pid_t _pid;
     AXUIElementRef _app;
@@ -29,7 +27,6 @@
     return app;
 }
 
-/// Returns any running apps that have the given bundleID.
 + (NSArray<App*>*) appsForBundleID:(NSString*)bundleIdentifier {
     NSMutableArray<App*>* matchingApps = [NSMutableArray array];
     NSArray* runningApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
@@ -43,7 +40,6 @@
     CFRelease(_app);
 }
 
-/// Returns all running apps.
 + (NSArray<App*>*) runningApps {
     NSMutableArray<App*>* apps = [NSMutableArray array];
     for (NSRunningApplication* runningApp in [[NSWorkspace sharedWorkspace] runningApplications]) {
@@ -56,7 +52,6 @@
     return ([object isKindOfClass: [App class]] && _pid == object->_pid);
 }
 
-/// Returns the main window of the given app, or nil.
 - (Window*) mainWindow {
     CFTypeRef window;
     return (AXUIElementCopyAttributeValue(_app, kAXMainWindowAttribute, &window) == kAXErrorSuccess
@@ -64,7 +59,6 @@
             : nil);
 }
 
-/// Returns all open windows owned by the given app.
 - (NSArray<Window*>*) allWindows {
     NSMutableArray<Window*>* returningWindows = [NSMutableArray array];
     CFArrayRef wins;
@@ -79,25 +73,10 @@
     return returningWindows;
 }
 
-/// Returns only the app's windows that are visible.
 - (NSArray<Window*>*) visibleWindows {
     return [FnUtils filter:[self allWindows] with:^BOOL(Window* win) {
         return win.isVisible;
     }];
-}
-
-// a few private methods for -activate
-
-- (BOOL) internal_activate:(BOOL)allWindows {
-    return [_runningApp activateWithOptions:NSApplicationActivateIgnoringOtherApps | (allWindows ? NSApplicationActivateAllWindows : 0)];
-}
-
-- (Window*) internal_focusedWindow {
-    CFTypeRef window;
-    if (AXUIElementCopyAttributeValue(_app, (CFStringRef)NSAccessibilityFocusedWindowAttribute, &window) == kAXErrorSuccess)
-        return [[Window alloc] initWithElement: window];
-    
-    return nil;
 }
 
 - (BOOL) isUnresponsive {
@@ -117,58 +96,40 @@
     return CGSEventIsAppUnresponsive(conn, &psn);
 }
 
-- (BOOL) internal_bringToFront:(BOOL)allwindows {
-    ProcessSerialNumber psn;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    GetProcessForPID(_pid, &psn);
-    return (SetFrontProcessWithOptions(&psn, allwindows ? 0 : kSetFrontProcessFrontWindowOnly) == noErr);
-#pragma clang diagnostic pop
-}
-
-/// Returns the localized name of the app (in UTF8).
 - (NSString*) title {
     return [_runningApp localizedName];
 }
 
-/// Returns the bundle identifier of the app.
 - (NSString*) bundleID {
     return [_runningApp bundleIdentifier];
 }
 
-/// Unhides the app (and all its windows) if it's hidden.
 - (BOOL) unhide {
     return (AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanFalse) == kAXErrorSuccess);
 }
 
-/// Hides the app (and all its windows).
 - (BOOL) hide {
     return (AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanTrue) == kAXErrorSuccess);
 }
 
-/// Tries to terminate the app.
 - (void) kill {
     [_runningApp terminate];
 }
 
-/// Definitely terminates the app.
 - (void) forceKill {
     [_runningApp forceTerminate];
 }
 
-/// Returns whether the app is currently hidden.
 - (BOOL) isHidden {
     CFBooleanRef isHidden;
     AXUIElementCopyAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, (CFTypeRef*)&isHidden);
     return CFBooleanGetValue(isHidden);
 }
 
-/// Returns the app's process identifier.
 - (pid_t) pid {
     return _pid;
 }
 
-/// Returns the string 'dock' if the app is in the dock, 'no-dock' if not, and 'no-gui' if it can't even have GUI elements if it wanted to.
 - (NSString*) kind {
     switch ([_runningApp activationPolicy]) {
         case NSApplicationActivationPolicyAccessory:  return @"no-dock";
@@ -177,13 +138,10 @@
     }
 }
 
-/// Launches the app with the given name, or activates it if it's already running.
-/// Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
 - (BOOL) launchOrFocus:(NSString*)name {
     return [[NSWorkspace sharedWorkspace] launchApplication: name];
 }
 
-/// Tries to activate the app (make its key window focused) and returns whether it succeeded; if allwindows is true, all windows of the application are brought forward as well.
 - (BOOL) activate:(BOOL)allWindows {
     if ([self isUnresponsive])
         return false;
@@ -192,6 +150,29 @@
     return (win
             ? ([win becomeMain] && [self internal_bringToFront:allWindows])
             : [self internal_activate: allWindows]);
+}
+
+// a few private methods for -activate
+
+- (BOOL) internal_activate:(BOOL)allWindows {
+    return [_runningApp activateWithOptions:NSApplicationActivateIgnoringOtherApps | (allWindows ? NSApplicationActivateAllWindows : 0)];
+}
+
+- (Window*) internal_focusedWindow {
+    CFTypeRef window;
+    if (AXUIElementCopyAttributeValue(_app, (CFStringRef)NSAccessibilityFocusedWindowAttribute, &window) == kAXErrorSuccess)
+        return [[Window alloc] initWithElement: window];
+    
+    return nil;
+}
+
+- (BOOL) internal_bringToFront:(BOOL)allwindows {
+    ProcessSerialNumber psn;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    GetProcessForPID(_pid, &psn);
+    return (SetFrontProcessWithOptions(&psn, allwindows ? 0 : kSetFrontProcessFrontWindowOnly) == noErr);
+#pragma clang diagnostic pop
 }
 
 @end
