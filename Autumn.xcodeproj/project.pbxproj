@@ -15,6 +15,7 @@
 		9451F2E31FBC94410084A2FD /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E21FBC94410084A2FD /* Window.m */; };
 		9451F2E61FBCB2A70084A2FD /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E51FBCB2A70084A2FD /* App.m */; };
 		94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B5C1FC7629500C3FDEF /* Alert.m */; };
+		94F36B651FC77D7200C3FDEF /* types.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F36B641FC77D7100C3FDEF /* types.d.ts */; };
 		94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FDB71E1FC34BA1008F094F /* ReplWindowController.m */; };
 		94FDB7211FC34BA1008F094F /* ReplWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */; };
 		94FDB7251FC34BB0008F094F /* DocsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FDB7231FC34BB0008F094F /* DocsWindowController.m */; };
@@ -41,6 +42,7 @@
 		9451F2E51FBCB2A70084A2FD /* App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		94F36B5B1FC7629500C3FDEF /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		94F36B5C1FC7629500C3FDEF /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		94F36B641FC77D7100C3FDEF /* types.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = types.d.ts; sourceTree = "<group>"; };
 		94FDB71D1FC34BA1008F094F /* ReplWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplWindowController.h; sourceTree = "<group>"; };
 		94FDB71E1FC34BA1008F094F /* ReplWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplWindowController.m; sourceTree = "<group>"; };
 		94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplWindowController.xib; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				94FDB71D1FC34BA1008F094F /* ReplWindowController.h */,
 				94FDB71E1FC34BA1008F094F /* ReplWindowController.m */,
 				94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */,
+				94F36B641FC77D7100C3FDEF /* types.d.ts */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
 				9451F2D81FBBE5130084A2FD /* main.m */,
@@ -181,6 +184,7 @@
 			files = (
 				9451F2D31FBBE5130084A2FD /* Assets.xcassets in Resources */,
 				9451F2D61FBBE5130084A2FD /* MainMenu.xib in Resources */,
+				94F36B651FC77D7200C3FDEF /* types.d.ts in Resources */,
 				94FDB7261FC34BB0008F094F /* DocsWindowController.xib in Resources */,
 				94FDB7211FC34BA1008F094F /* ReplWindowController.xib in Resources */,
 			);
