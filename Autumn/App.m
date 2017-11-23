@@ -6,6 +6,7 @@
 //  Copyright © 2017 Pen & Paper Software. All rights reserved.
 //
 
+#import <AppKit/AppKit.h>
 #import "App.h"
 #import "Window.h"
 #import "FnUtils.h"
@@ -166,12 +167,12 @@
     return nil;
 }
 
-- (BOOL) internal_bringToFront:(BOOL)allwindows {
+- (BOOL) internal_bringToFront:(BOOL)allWindows {
     ProcessSerialNumber psn;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     GetProcessForPID(_pid, &psn);
-    return (SetFrontProcessWithOptions(&psn, allwindows ? 0 : kSetFrontProcessFrontWindowOnly) == noErr);
+    return (SetFrontProcessWithOptions(&psn, allWindows ? 0 : kSetFrontProcessFrontWindowOnly) == noErr);
 #pragma clang diagnostic pop
 }
 

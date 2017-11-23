@@ -6,6 +6,7 @@
 //  Copyright © 2017 Pen & Paper Software. All rights reserved.
 //
 
+#import <AppKit/AppKit.h>
 #import "Window.h"
 #import "App.h"
 #import "FnUtils.h"
@@ -24,7 +25,7 @@
 
 @implementation Window {
     AXUIElementRef _win;
-    NSNumber* _winid;
+    NSNumber* _id;
 }
 
 static AXUIElementRef system_wide_element() {
@@ -203,12 +204,12 @@ cleanup:
 
 /// Returns a unique number identifying this window.
 - (NSNumber*) windowID {
-    if (_winid) return _winid;
+    if (_id) return _id;
     CGWindowID winid;
     extern AXError _AXUIElementGetWindow(AXUIElementRef, CGWindowID* out);
     AXError err = _AXUIElementGetWindow(_win, &winid);
     if (err) return nil;
-    return _winid = @(winid);
+    return _id = @(winid);
 }
 
 + (NSArray<NSNumber*>*) orderedWindowIDs {

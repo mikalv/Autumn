@@ -6,12 +6,13 @@
 //  Copyright © 2017 Pen & Paper Software. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
-#import "JS.h"
+#import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @class App;
+@class Window;
 
-CLASS_START(Window)
+@protocol JSExport_Window <JSExport>
 
 + (Window*) focusedWindow;
 + (NSArray<NSNumber*>*) orderedWindowIDs;
@@ -35,10 +36,10 @@ CLASS_START(Window)
 - (NSNumber*) windowID;
 - (App*) app;
 
-CLASS_END(Window)
+@end
 
-@interface Window (Private)
+@interface Window : NSObject <JSExport_Window>
 
-- (instancetype) initWithElement:(AXUIElementRef)element; // private
+- (instancetype) initWithElement:(AXUIElementRef)element;
 
 @end
