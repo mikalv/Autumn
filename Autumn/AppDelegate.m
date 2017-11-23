@@ -26,8 +26,8 @@
 }
 
 - (IBAction) runScript:(id)sender {
-    [[JavaScriptBridge sharedBridge] reset];
-    [[JavaScriptBridge sharedBridge] runConfig];
+    [JavaScriptBridge reset];
+    [JavaScriptBridge runConfig];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -35,7 +35,7 @@
     [Hotkey setup];
     
     [Alert show:@"Loading config..." duration: NAN];
-    [[JavaScriptBridge sharedBridge] runConfig];
+    [JavaScriptBridge runConfig];
     
     NSStatusBar* bar = [NSStatusBar systemStatusBar];
     item = [bar statusItemWithLength: NSSquareStatusItemLength];

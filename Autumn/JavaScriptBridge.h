@@ -10,9 +10,7 @@
 
 @interface JavaScriptBridge : NSObject
 
-+ (instancetype) sharedBridge;
-
-- (void) runConfig;
-- (void) reset;
++ (void) runConfig;
++ (void) reset;
 
 @end

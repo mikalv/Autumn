@@ -13,21 +13,11 @@
 #import "Hotkey.h"
 #import "Alert.h"
 
-@implementation JavaScriptBridge {
-    JSContext* ctx;
-}
+static JSContext* ctx;
 
-+ (instancetype) sharedBridge {
-    static JavaScriptBridge* bridge;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        bridge = [[JavaScriptBridge alloc] init];
-        [bridge setup];
-    });
-    return bridge;
-}
+@implementation JavaScriptBridge
 
-- (void) runConfig {
++ (void) runConfig {
     NSString* pwd = [@"~/.autumnjs/" stringByStandardizingPath];
     NSString* configFile = [pwd stringByAppendingPathComponent:@"init.js"];
     NSString* script = [NSString stringWithContentsOfFile:configFile encoding:NSUTF8StringEncoding error:NULL];
@@ -35,7 +25,7 @@
     [ctx evaluateScript: script];
 }
 
-- (void) setup {
++ (void) setup {
     JSVirtualMachine* vm = [[JSVirtualMachine alloc] init];
     ctx = [[JSContext alloc] initWithVirtualMachine: vm];
     
@@ -53,11 +43,11 @@
     };
 }
 
-- (void) destroy {
++ (void) destroy {
     [Hotkey resetHandlers];
 }
 
-- (void) reset {
++ (void) reset {
     [self destroy];
     [self setup];
 }
