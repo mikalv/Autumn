@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JavaScriptBridge : NSObject
+@interface JS : NSObject
 
 + (void) reset;
 + (void) runConfig;

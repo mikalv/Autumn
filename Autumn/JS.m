@@ -6,7 +6,7 @@
 //  Copyright © 2017 Pen & Paper Software. All rights reserved.
 //
 
-#import "JavaScriptBridge.h"
+#import "JS.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "Window.h"
 #import "App.h"
@@ -37,7 +37,7 @@ static JSValue* loadFile(NSString* path) {
     return result;
 }
 
-@implementation JavaScriptBridge
+@implementation JS
 
 + (void) runConfig {
     dispatch_async(dispatch_get_main_queue(), ^{

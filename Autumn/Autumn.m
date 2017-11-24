@@ -9,7 +9,7 @@
 #import "Autumn.h"
 
 #import <Cocoa/Cocoa.h>
-#import "JavaScriptBridge.h"
+#import "JS.h"
 #import "DocsWindowController.h"
 #import "ReplWindowController.h"
 
@@ -20,7 +20,7 @@
 }
 
 + (void) reloadConfigs {
-    [JavaScriptBridge runConfig];
+    [JS runConfig];
 }
 
 + (void) showDocs {

@@ -7,7 +7,7 @@
 //
 
 #import "ReplWindowController.h"
-#import "JavaScriptBridge.h"
+#import "JS.h"
 
 static NSDictionary<NSAttributedStringKey, id>* outputAttrs;
 static NSDictionary<NSAttributedStringKey, id>* inputAttrs;
@@ -45,7 +45,7 @@ static NSDictionary<NSAttributedStringKey, id>* inputAttrs;
     NSString* input = sender.stringValue;
     sender.stringValue = @"";
     
-    NSString* output = [JavaScriptBridge runString: input];
+    NSString* output = [JS runString: input];
     
     [outputView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"\n$ %@\n", input]  attributes:inputAttrs]];
     [outputView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"> %@\n", output] attributes:outputAttrs]];

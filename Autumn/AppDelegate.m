@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "Autumn.h"
-#import "JavaScriptBridge.h"
+#import "JS.h"
 #import "Alert.h"
 
 @implementation AppDelegate {
@@ -44,7 +44,7 @@
     item.menu = statusItemMenu;
     
     [Alert show:@"Loading config..." options: nil];
-    [JavaScriptBridge runConfig];
+    [JS runConfig];
 }
 
 @end
