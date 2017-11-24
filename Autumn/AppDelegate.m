@@ -46,6 +46,7 @@
     
     [Alert show:@"Loading config..." options: nil];
     [Env setupOnce];
+    [JS runConfig];
 }
 
 @end

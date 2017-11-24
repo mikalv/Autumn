@@ -16,7 +16,6 @@
 + (void) setupOnce {
     [Keycodes setupOnce];
     [Hotkey setupOnce];
-    [JS runConfig];
 }
 
 + (void) reset {
