@@ -74,6 +74,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		944173ED1FC8702A00330ABA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9451F2CF1FBBE5130084A2FD /* AppDelegate.h */,
+				9451F2D01FBBE5130084A2FD /* AppDelegate.m */,
+				944173EA1FC7E78C00330ABA /* Env.h */,
+				944173EB1FC7E78C00330ABA /* Env.m */,
+				94FDB7271FC34C09008F094F /* JS.h */,
+				94FDB7281FC34C09008F094F /* JS.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		944173EE1FC8704100330ABA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				94F36B661FC7A17100C3FDEF /* Autumn.h */,
+				94F36B671FC7A17100C3FDEF /* Autumn.m */,
+				94FDB72D1FC5AC11008F094F /* Keycodes.h */,
+				94FDB72E1FC5AC11008F094F /* Keycodes.m */,
+				9451F2E11FBC94410084A2FD /* Window.h */,
+				9451F2E21FBC94410084A2FD /* Window.m */,
+				94FDB72A1FC4E1E0008F094F /* Hotkey.h */,
+				94FDB72B1FC4E1E0008F094F /* Hotkey.m */,
+				9451F2E41FBCB2A70084A2FD /* App.h */,
+				9451F2E51FBCB2A70084A2FD /* App.m */,
+				94F36B5B1FC7629500C3FDEF /* Alert.h */,
+				94F36B5C1FC7629500C3FDEF /* Alert.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		944173EF1FC8704F00330ABA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9451F2D41FBBE5130084A2FD /* MainMenu.xib */,
+				94FDB7241FC34BB0008F094F /* DocsWindowController.xib */,
+				94FDB7221FC34BB0008F094F /* DocsWindowController.h */,
+				94FDB7231FC34BB0008F094F /* DocsWindowController.m */,
+				94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */,
+				94FDB71D1FC34BA1008F094F /* ReplWindowController.h */,
+				94FDB71E1FC34BA1008F094F /* ReplWindowController.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		9451F2C31FBBE5130084A2FD = {
 			isa = PBXGroup;
 			children = (
@@ -93,33 +139,11 @@
 		9451F2CE1FBBE5130084A2FD /* Autumn */ = {
 			isa = PBXGroup;
 			children = (
-				9451F2D41FBBE5130084A2FD /* MainMenu.xib */,
-				9451F2CF1FBBE5130084A2FD /* AppDelegate.h */,
-				9451F2D01FBBE5130084A2FD /* AppDelegate.m */,
-				944173EA1FC7E78C00330ABA /* Env.h */,
-				944173EB1FC7E78C00330ABA /* Env.m */,
-				94FDB7271FC34C09008F094F /* JS.h */,
-				94FDB7281FC34C09008F094F /* JS.m */,
-				94F36B661FC7A17100C3FDEF /* Autumn.h */,
-				94F36B671FC7A17100C3FDEF /* Autumn.m */,
-				94FDB72D1FC5AC11008F094F /* Keycodes.h */,
-				94FDB72E1FC5AC11008F094F /* Keycodes.m */,
-				9451F2E11FBC94410084A2FD /* Window.h */,
-				9451F2E21FBC94410084A2FD /* Window.m */,
-				94FDB72A1FC4E1E0008F094F /* Hotkey.h */,
-				94FDB72B1FC4E1E0008F094F /* Hotkey.m */,
-				9451F2E41FBCB2A70084A2FD /* App.h */,
-				9451F2E51FBCB2A70084A2FD /* App.m */,
-				94F36B5B1FC7629500C3FDEF /* Alert.h */,
-				94F36B5C1FC7629500C3FDEF /* Alert.m */,
+				944173EF1FC8704F00330ABA /* UI */,
+				944173ED1FC8702A00330ABA /* Core */,
+				944173EE1FC8704100330ABA /* API */,
 				943B01181FBDDC4600EA17A2 /* FnUtils.h */,
 				943B01191FBDDC4600EA17A2 /* FnUtils.m */,
-				94FDB7241FC34BB0008F094F /* DocsWindowController.xib */,
-				94FDB7221FC34BB0008F094F /* DocsWindowController.h */,
-				94FDB7231FC34BB0008F094F /* DocsWindowController.m */,
-				94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */,
-				94FDB71D1FC34BA1008F094F /* ReplWindowController.h */,
-				94FDB71E1FC34BA1008F094F /* ReplWindowController.m */,
 				94F36B641FC77D7100C3FDEF /* types.d.ts */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
