@@ -19,22 +19,18 @@ static JSContext* ctx;
 static NSMutableArray<NSString*>* requireStack;
 
 static JSValue* loadFile(NSString* path) {
-    if (![path hasSuffix: @".js"])
-        path = [path stringByAppendingPathExtension: @"js"];
-    
-    NSString* fullPath = [([path hasPrefix: @"/"]
-                           ? path
-                           : [requireStack.lastObject.stringByDeletingLastPathComponent stringByAppendingPathComponent: path])
-                          stringByStandardizingPath];
+    if (![path hasSuffix: @".js"]) path = [path stringByAppendingPathExtension: @"js"];
+    if (![path hasPrefix: @"/"])   path = [requireStack.lastObject.stringByDeletingLastPathComponent stringByAppendingPathComponent: path];
+    path = path.stringByStandardizingPath;
     
     __autoreleasing NSError* error;
-    NSString* script = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    NSString* script = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     if (!script) {
-        NSLog(@"error loading file at [%@]: %@", fullPath, error);
+        NSLog(@"error loading file at [%@]: %@", path, error);
         return nil;
     }
     
-    [requireStack addObject: fullPath];
+    [requireStack addObject: path];
     JSValue* result = [ctx evaluateScript: script];
     [requireStack removeLastObject];
     
