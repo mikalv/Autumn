@@ -57,8 +57,11 @@ static NSMutableDictionary* hotkeys;
         if ([mods[@"alt"] toBool])   _mods |= optionKey;
         if ([mods[@"shift"] toBool]) _mods |= shiftKey;
         
-        _pressedFn = [JSManagedValue managedValueWithValue:spec[@"pressed"] andOwner:self];
-        _releasedFn = [JSManagedValue managedValueWithValue:spec[@"released"] andOwner:self];
+        JSValue* pressed = spec[@"pressed"];
+        JSValue* released = spec[@"released"];
+        
+        _pressedFn = pressed.isObject ? [JSManagedValue managedValueWithValue:pressed andOwner:self] : nil;
+        _releasedFn = released.isObject ? [JSManagedValue managedValueWithValue:released andOwner:self] : nil;
     }
     return self;
 }
