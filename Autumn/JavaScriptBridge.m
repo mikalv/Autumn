@@ -16,8 +16,8 @@
 #import "Autumn.h"
 
 static JSContext* ctx;
-static NSMutableArray* requireStack;
-static NSString* currentFile;
+static NSMutableArray* dirnameStack;
+static NSMutableArray* fullPathStack;
 
 static JSValue* loadFile(NSString* path) {
     if (![path hasSuffix: @".js"])
@@ -25,7 +25,7 @@ static JSValue* loadFile(NSString* path) {
     
     NSString* fullPath = [([path hasPrefix: @"/"]
                            ? path
-                           : [requireStack.lastObject stringByAppendingPathComponent: path])
+                           : [dirnameStack.lastObject stringByAppendingPathComponent: path])
                           stringByStandardizingPath];
     
     __autoreleasing NSError* error;
@@ -35,15 +35,14 @@ static JSValue* loadFile(NSString* path) {
         return nil;
     }
     
-    [requireStack addObject: [fullPath stringByDeletingLastPathComponent]];
-    
-    currentFile = fullPath;
+    [fullPathStack addObject: fullPath];
+    [dirnameStack addObject: [fullPath stringByDeletingLastPathComponent]];
     
     JSValue* result = [ctx evaluateScript: script];
-    NSLog(@"current exception = %@", [JSContext currentContext].exception);
     
-    [requireStack removeLastObject];
-    
+    [fullPathStack removeLastObject];
+    [dirnameStack removeLastObject];
+
     return result;
 }
 
@@ -57,8 +56,8 @@ static JSValue* loadFile(NSString* path) {
 }
 
 + (void) setup {
-    requireStack = [NSMutableArray array];
-    [requireStack addObject: [@"~/.autumnjs/" stringByStandardizingPath]];
+    dirnameStack = [NSMutableArray array];
+    [dirnameStack addObject: [@"~/.autumnjs/" stringByStandardizingPath]];
     
     [Keycodes setup];
     [Hotkey setup];
@@ -68,7 +67,7 @@ static JSValue* loadFile(NSString* path) {
     
     ctx.exceptionHandler = ^(JSContext *context, JSValue *exception) {
         NSLog(@"JS exception: %@\n%@:%@\n%@", exception, exception[@"line"], exception[@"column"], exception[@"stack"]);
-        [Alert show:[NSString stringWithFormat:@"Config error\n%@\n%@ %@:%@", exception.toString, [requireStack.lastObject stringByAppendingPathComponent: currentFile], exception[@"line"], exception[@"column"]] duration:@5];
+        [Alert show:[NSString stringWithFormat:@"Config error\n%@\n%@ %@:%@", exception.toString, fullPathStack.lastObject, exception[@"line"], exception[@"column"]] duration:@5];
     };
     
     ctx[@"Autumn"] = [Autumn class];
