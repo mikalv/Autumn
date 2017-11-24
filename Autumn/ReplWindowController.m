@@ -18,7 +18,7 @@ static NSDictionary<NSAttributedStringKey, id>* inputAttrs;
 
 + (void) load {
     if (self == [ReplWindowController class]) {
-        NSFont* font = [NSFont fontWithName:@"Menlo" size:16.0];
+        NSFont* font = [NSFont fontWithName:@"Menlo" size:14.0];
         
         inputAttrs = @{NSFontAttributeName: font,
                        NSForegroundColorAttributeName: [NSColor blueColor]};
