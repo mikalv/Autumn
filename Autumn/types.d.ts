@@ -63,6 +63,13 @@ declare global {
         static runningApps(): [App] { return null; }
         
         /**
+         * Launches the app with the given name, or activates it if it's already running.
+         * Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
+         * @param name Localized name of the app.
+         */
+        static open(name: string): boolean { return null; }
+        
+        /**
          * Checks whether this app object is the same as another.
          * @param app Another app object.
          */
@@ -132,13 +139,6 @@ declare global {
          * Returns the string 'dock' if the app is in the dock, 'no-dock' if not, and 'no-gui' if it can't even have GUI elements if it wanted to.
          */
         kind(): string { return null; }
-        
-        /**
-         * Launches the app with the given name, or activates it if it's already running.
-         * Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
-         * @param name Localized name of the app.
-         */
-        launchOrFocus(name: string): boolean { return null; }
         
         /**
          * Tries to activate the app (make its key window focused) and returns whether it succeeded.

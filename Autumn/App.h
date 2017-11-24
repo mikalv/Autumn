@@ -29,7 +29,7 @@
 - (pid_t) pid;
 - (NSString*) kind;
 
-- (BOOL) launchOrFocus:(NSString*)name;
++ (BOOL) open:(NSString*)name;
 - (BOOL) activate:(BOOL)allWindows;
 
 - (BOOL) unhide;

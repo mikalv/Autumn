@@ -139,7 +139,7 @@
     }
 }
 
-- (BOOL) launchOrFocus:(NSString*)name {
++ (BOOL) open:(NSString*)name {
     return [[NSWorkspace sharedWorkspace] launchApplication: name];
 }
 
