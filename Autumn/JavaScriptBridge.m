@@ -13,6 +13,7 @@
 #import "Hotkey.h"
 #import "Keycodes.h"
 #import "Alert.h"
+#import "Autumn.h"
 
 static JSContext* ctx;
 
@@ -39,6 +40,7 @@ static JSContext* ctx;
         NSLog(@"JS exception: %@", exception);
     };
     
+    ctx[@"Autumn"] = [Autumn class];
     ctx[@"Window"] = [Window class];
     ctx[@"App"] = [App class];
     ctx[@"Hotkey"] = [Hotkey class];

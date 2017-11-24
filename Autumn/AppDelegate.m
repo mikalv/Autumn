@@ -8,11 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "Autumn.h"
 #import "JavaScriptBridge.h"
-
-#import "DocsWindowController.h"
-#import "ReplWindowController.h"
-
 #import "Alert.h"
 
 @implementation AppDelegate {
@@ -21,21 +18,19 @@
 }
 
 - (IBAction) quitApp:(id)sender {
-    [NSApp terminate: nil];
+    [Autumn quit];
 }
 
 - (IBAction) runScript:(id)sender {
-    [JavaScriptBridge runConfig];
+    [Autumn reloadConfigs];
 }
 
 - (IBAction) showDocsWindow:(id)sender {
-    [NSApp activateIgnoringOtherApps:YES];
-    [[DocsWindowController sharedInstance] showWindow: nil];
+    [Autumn showDocs];
 }
 
 - (IBAction) showREPL:(id)sender {
-    [NSApp activateIgnoringOtherApps:YES];
-    [[ReplWindowController sharedInstance] showWindow: nil];
+    [Autumn showRepl];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
