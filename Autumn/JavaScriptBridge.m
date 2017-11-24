@@ -50,8 +50,10 @@ static JSValue* loadFile(NSString* path) {
 @implementation JavaScriptBridge
 
 + (void) runConfig {
-    [self reset];
-    loadFile(@"init.js");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reset];
+        loadFile(@"init.js");
+    });
 }
 
 + (void) setup {
