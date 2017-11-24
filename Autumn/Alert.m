@@ -16,8 +16,9 @@ static NSMutableArray* visibleAlerts;
     NSBox* box;
 }
 
-+ (void) show:(NSString*)oneLineMsg duration:(CGFloat)duration {
-    if (isnan(duration)) duration = 2.0;
++ (void) show:(NSString*)oneLineMsg options:(JSValue*)options {
+    JSValue* durationValue = options[@"duration"];
+    CGFloat duration = durationValue.isNumber ? durationValue.toNumber.doubleValue : 2.0;
     
     if (!visibleAlerts)
         visibleAlerts = [NSMutableArray array];

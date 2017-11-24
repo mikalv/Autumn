@@ -1,7 +1,11 @@
 declare global {
     
+    interface AlertOptions {
+        duration?: number;
+    }
+    
     class Alert {
-        static show(msg: string): void;
+        static show(msg: string, options?: AlertOptions): void;
     }
     
     interface HotkeyModifiers {

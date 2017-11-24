@@ -46,7 +46,6 @@
     [Keycodes setup];
     [Hotkey setup];
     
-    [Alert show:@"Loading config..." duration: NAN];
     [JavaScriptBridge runConfig];
     
     NSStatusBar* bar = [NSStatusBar systemStatusBar];
@@ -57,6 +56,7 @@
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
     BOOL trusted = AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
     NSLog(@"trusted = %d", trusted);
+    [Alert show:@"Loading config..." options: nil];
 }
 
 @end
