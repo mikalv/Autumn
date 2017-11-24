@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
+
 #import "JavaScriptBridge.h"
+
+#import "DocsWindowController.h"
+#import "ReplWindowController.h"
 
 #import "Alert.h"
 #import "Hotkey.h"
@@ -28,6 +32,14 @@
 - (IBAction) runScript:(id)sender {
     [JavaScriptBridge reset];
     [JavaScriptBridge runConfig];
+}
+
+- (IBAction) showDocsWindow:(id)sender {
+    [[DocsWindowController sharedInstance] showWindow: nil];
+}
+
+- (IBAction) showREPL:(id)sender {
+    [[ReplWindowController sharedInstance] showWindow: nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

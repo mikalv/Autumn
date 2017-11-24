@@ -686,6 +686,18 @@
                         <action selector="runScript:" target="Voe-Tx-rLC" id="byp-n6-EKz"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Show Docs Window" id="9aX-WT-Slx">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showDocsWindow:" target="Voe-Tx-rLC" id="bT5-MV-GkL"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Show REPL Window" id="BKg-Yo-7sP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showREPL:" target="Voe-Tx-rLC" id="abW-5K-kP6"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="UqB-P4-NvQ"/>
                 <menuItem title="Quit Autumn" id="YSk-Cf-Xca">
                     <modifierMask key="keyEquivalentModifierMask"/>

@@ -14,6 +14,19 @@
 
 @implementation ReplWindowController
 
++ (instancetype) sharedInstance {
+    static ReplWindowController* singleton;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        singleton = [[ReplWindowController alloc] initWithWindow: nil];
+    });
+    return singleton;
+}
+
+- (NSNibName) windowNibName {
+    return @"ReplWindowController";
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     

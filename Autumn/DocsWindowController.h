@@ -10,4 +10,6 @@
 
 @interface DocsWindowController : NSWindowController
 
++ (instancetype) sharedInstance;
+
 @end

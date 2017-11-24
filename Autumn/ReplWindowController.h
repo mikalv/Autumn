@@ -10,4 +10,6 @@
 
 @interface ReplWindowController : NSWindowController
 
++ (instancetype) sharedInstance;
+
 @end
