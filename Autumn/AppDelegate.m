@@ -35,10 +35,12 @@
 }
 
 - (IBAction) showDocsWindow:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
     [[DocsWindowController sharedInstance] showWindow: nil];
 }
 
 - (IBAction) showREPL:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
     [[ReplWindowController sharedInstance] showWindow: nil];
 }
 
