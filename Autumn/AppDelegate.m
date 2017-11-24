@@ -14,8 +14,6 @@
 #import "ReplWindowController.h"
 
 #import "Alert.h"
-#import "Hotkey.h"
-#import "Keycodes.h"
 
 @implementation AppDelegate {
     NSStatusItem* item;
@@ -49,9 +47,6 @@
     item = [bar statusItemWithLength: NSSquareStatusItemLength];
     item.image = [NSImage imageNamed:@"StatusIcon"];
     item.menu = statusItemMenu;
-    
-    [Keycodes setup];
-    [Hotkey setup];
     
     [Alert show:@"Loading config..." options: nil];
     [JavaScriptBridge runConfig];

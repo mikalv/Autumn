@@ -11,6 +11,7 @@
 #import "Window.h"
 #import "App.h"
 #import "Hotkey.h"
+#import "Keycodes.h"
 #import "Alert.h"
 
 static JSContext* ctx;
@@ -28,6 +29,9 @@ static JSContext* ctx;
 }
 
 + (void) setup {
+    [Keycodes setup];
+    [Hotkey setup];
+    
     JSVirtualMachine* vm = [[JSVirtualMachine alloc] init];
     ctx = [[JSContext alloc] initWithVirtualMachine: vm];
     
