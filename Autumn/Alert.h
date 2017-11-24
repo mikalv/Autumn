@@ -17,4 +17,7 @@ JSExportAs(show, + (void) show:(NSString*)oneLineMsg options:(JSValue*)options);
 
 @interface Alert : NSWindowController <NSWindowDelegate, JSExport_Alert>
 
++ (void) show:(NSString*)oneLineMsg
+     duration:(NSNumber*)duration;
+
 @end

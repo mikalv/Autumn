@@ -1,5 +1,7 @@
 declare global {
     
+    function loadFile(path: string): any;
+    
     class Autumn {
         static quit(): void;
         static reloadConfigs(): void;

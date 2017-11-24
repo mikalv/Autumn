@@ -17,8 +17,16 @@ static NSMutableArray* visibleAlerts;
 }
 
 + (void) show:(NSString*)oneLineMsg options:(JSValue*)options {
-    JSValue* durationValue = options[@"duration"];
-    CGFloat duration = durationValue.isNumber ? durationValue.toNumber.doubleValue : 2.0;
+    JSValue* durationValue = options.isObject ? options[@"duration"] : nil;
+    NSNumber* duration = durationValue.isNumber ? durationValue.toNumber : nil;
+    
+    [self show:oneLineMsg duration:duration];
+}
+
++ (void) show:(NSString*)oneLineMsg
+     duration:(NSNumber*)dur
+{
+    CGFloat duration = dur ? dur.doubleValue : 2.0;
     
     if (!visibleAlerts)
         visibleAlerts = [NSMutableArray array];
