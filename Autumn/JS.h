@@ -10,8 +10,8 @@
 
 @interface JS : NSObject
 
-+ (void) reset;
 + (void) runConfig;
 + (NSString*) runString:(NSString*)str;
++ (void) reset;
 
 @end

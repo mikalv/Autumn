@@ -15,13 +15,17 @@ static NSMutableDictionary* map;
 
 @implementation Keycodes
 
-+ (void) setup {
++ (void) setupOnce {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(inputSourceChanged:)
                                                  name:NSTextInputContextKeyboardSelectionDidChangeNotification
                                                object:nil];
     
     [self recacheKeycodes];
+}
+
++ (void) reset {
+    [self setInputSourceChangedHandler: nil];
 }
 
 + (void) inputSourceChanged:(NSNotification*)note {

@@ -17,7 +17,8 @@
 
 @interface Keycodes : NSObject <JSExport_Keycodes>
 
-+ (void) setup;
++ (void) setupOnce;
++ (void) reset;
 + (NSDictionary<NSString*, NSNumber*>*) map;
 
 @end

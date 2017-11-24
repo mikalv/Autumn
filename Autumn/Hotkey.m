@@ -21,7 +21,7 @@
 }
 
 static UInt32 hotkeysNextKey;
-static NSMutableDictionary* hotkeys;
+static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
 
 + (UInt32) store:(Hotkey*)hotkey {
     UInt32 i = hotkeysNextKey++;
@@ -41,9 +41,10 @@ static NSMutableDictionary* hotkeys;
     return hotkeys[@(uid)];
 }
 
-+ (void) resetHandlers {
-    hotkeys = [NSMutableDictionary dictionary];
-    hotkeysNextKey = 0;
++ (void) reset {
+    for (Hotkey* hotkey in hotkeys.allValues) {
+        [hotkey disable];
+    }
 }
 
 - (instancetype) initWithMap:(JSValue*)spec {
@@ -73,16 +74,16 @@ static NSMutableDictionary* hotkeys;
     }
 }
 
-- (BOOL) enable {
+- (NSNumber*) enable {
     if (_enabled)
-        return YES;
+        return @YES;
     
     _enabled = YES;
     _uid = [Hotkey store: self];
     EventHotKeyID hotKeyID = { .signature = 'MJLN', .id = _uid };
     _carbonHotKey = NULL;
     OSStatus err = RegisterEventHotKey(_keycode, _mods, hotKeyID, GetEventDispatcherTarget(), kEventHotKeyExclusive, &_carbonHotKey);
-    return err != eventHotKeyExistsErr;
+    return (err != eventHotKeyExistsErr) ? @YES : @NO;
 }
 
 - (void) disable {
@@ -111,8 +112,8 @@ static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerC
     return noErr;
 }
 
-+ (void) setup {
-    [self resetHandlers];
++ (void) setupOnce {
+    hotkeys = [NSMutableDictionary dictionary];
     
     EventTypeSpec hotKeyPressedSpec[] = {
         {kEventClassKeyboard, kEventHotKeyPressed},

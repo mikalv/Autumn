@@ -14,6 +14,7 @@
 #import "Keycodes.h"
 #import "Alert.h"
 #import "Autumn.h"
+#import "Env.h"
 
 static JSContext* ctx;
 static NSMutableArray<NSString*>* requireStack;
@@ -41,7 +42,7 @@ static JSValue* loadFile(NSString* path) {
 
 + (void) runConfig {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self reset];
+        [Env reset];
         loadFile(@"~/.autumnjs/init.js".stringByStandardizingPath);
     });
 }
@@ -50,11 +51,8 @@ static JSValue* loadFile(NSString* path) {
     return [ctx evaluateScript: str].toString;
 }
 
-+ (void) setup {
++ (void) reset {
     requireStack = [NSMutableArray array];
-    
-    [Keycodes setup];
-    [Hotkey setup];
     
     JSVirtualMachine* vm = [[JSVirtualMachine alloc] init];
     ctx = [[JSContext alloc] initWithVirtualMachine: vm];
@@ -83,15 +81,6 @@ static JSValue* loadFile(NSString* path) {
         }
         NSLog(@"CONSOLE.LOG: %@", s);
     };
-}
-
-+ (void) destroy {
-    [Hotkey resetHandlers];
-}
-
-+ (void) reset {
-    [self destroy];
-    [self setup];
 }
 
 @end

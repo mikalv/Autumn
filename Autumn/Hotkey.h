@@ -14,14 +14,14 @@
 @protocol JSExport_Hotkey <JSExport>
 
 - (instancetype) initWithMap:(JSValue*)spec;
-- (BOOL) enable;
+- (NSNumber*) enable;
 - (void) disable;
 
 @end
 
 @interface Hotkey : NSObject <JSExport_Hotkey>
 
-+ (void) setup;
-+ (void) resetHandlers;
++ (void) setupOnce;
++ (void) reset;
 
 @end

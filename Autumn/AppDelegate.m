@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "Autumn.h"
+#import "Env.h"
 #import "JS.h"
 #import "Alert.h"
 
@@ -44,7 +45,7 @@
     item.menu = statusItemMenu;
     
     [Alert show:@"Loading config..." options: nil];
-    [JS runConfig];
+    [Env setupOnce];
 }
 
 @end
