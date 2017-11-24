@@ -17,9 +17,6 @@
 #import "Hotkey.h"
 #import "Keycodes.h"
 
-@interface AppDelegate ()
-@end
-
 @implementation AppDelegate {
     NSStatusItem* item;
     IBOutlet NSMenu* statusItemMenu;
@@ -30,7 +27,6 @@
 }
 
 - (IBAction) runScript:(id)sender {
-    [JavaScriptBridge reset];
     [JavaScriptBridge runConfig];
 }
 
@@ -45,20 +41,20 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [Keycodes setup];
-    [Hotkey setup];
-    
-    [JavaScriptBridge runConfig];
+    NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
+    BOOL trusted = AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
+    NSLog(@"trusted = %d", trusted);
     
     NSStatusBar* bar = [NSStatusBar systemStatusBar];
     item = [bar statusItemWithLength: NSSquareStatusItemLength];
     item.image = [NSImage imageNamed:@"StatusIcon"];
     item.menu = statusItemMenu;
     
-    NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
-    BOOL trusted = AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
-    NSLog(@"trusted = %d", trusted);
+    [Keycodes setup];
+    [Hotkey setup];
+    
     [Alert show:@"Loading config..." options: nil];
+    [JavaScriptBridge runConfig];
 }
 
 @end

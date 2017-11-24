@@ -18,6 +18,8 @@ static JSContext* ctx;
 @implementation JavaScriptBridge
 
 + (void) runConfig {
+    [self reset];
+    
     NSString* pwd = [@"~/.autumnjs/" stringByStandardizingPath];
     NSString* configFile = [pwd stringByAppendingPathComponent:@"init.js"];
     NSString* script = [NSString stringWithContentsOfFile:configFile encoding:NSUTF8StringEncoding error:NULL];
