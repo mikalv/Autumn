@@ -46,6 +46,10 @@ static JSValue* loadFile(NSString* path) {
     });
 }
 
++ (NSString*) runString:(NSString*)str {
+    return [ctx evaluateScript: str].toString;
+}
+
 + (void) setup {
     requireStack = [NSMutableArray array];
     

@@ -10,7 +10,8 @@
 
 @interface JavaScriptBridge : NSObject
 
-+ (void) runConfig;
 + (void) reset;
++ (void) runConfig;
++ (NSString*) runString:(NSString*)str;
 
 @end

@@ -7,12 +7,26 @@
 //
 
 #import "ReplWindowController.h"
+#import "JavaScriptBridge.h"
 
-@interface ReplWindowController ()
+static NSDictionary<NSAttributedStringKey, id>* outputAttrs;
+static NSDictionary<NSAttributedStringKey, id>* inputAttrs;
 
-@end
+@implementation ReplWindowController {
+    __weak IBOutlet NSTextView* outputView;
+}
 
-@implementation ReplWindowController
++ (void) load {
+    if (self == [ReplWindowController class]) {
+        NSFont* font = [NSFont fontWithName:@"Menlo" size:16.0];
+        
+        inputAttrs = @{NSFontAttributeName: font,
+                       NSForegroundColorAttributeName: [NSColor blueColor]};
+        
+        outputAttrs = @{NSFontAttributeName: font,
+                        NSForegroundColorAttributeName: [NSColor redColor]};
+    }
+}
 
 + (instancetype) sharedInstance {
     static ReplWindowController* singleton;
@@ -27,10 +41,16 @@
     return @"ReplWindowController";
 }
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
+- (IBAction) runString:(NSTextField*)sender {
+    NSString* input = sender.stringValue;
+    sender.stringValue = @"";
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    NSString* output = [JavaScriptBridge runString: input];
+    
+    [outputView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"\n$ %@\n", input]  attributes:inputAttrs]];
+    [outputView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"> %@\n", output] attributes:outputAttrs]];
+    
+    [outputView scrollRangeToVisible:NSMakeRange(outputView.textStorage.length, 0)];
 }
 
 @end
