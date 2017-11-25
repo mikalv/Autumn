@@ -25,7 +25,7 @@ static NSDateFormatter* nowFormatter;
         NSFont* font = [NSFont fontWithName:@"Menlo" size:12.0];
         
         nowFormatter = [[NSDateFormatter alloc] init];
-        nowFormatter.dateFormat = @"[HH:mm:ss] ";
+        nowFormatter.dateFormat = @"[HH:mm:ss.SSS] ";
         
         inputAttrs  = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemBlueColor]};
         outputAttrs = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemGreenColor]};
