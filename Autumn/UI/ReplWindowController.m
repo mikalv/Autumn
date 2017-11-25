@@ -29,8 +29,8 @@ static NSDateFormatter* nowFormatter;
         
         inputAttrs  = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemBlueColor]};
         outputAttrs = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemGreenColor]};
-        errorAttrs  = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemRedColor]};
-        textAttrs   = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemPurpleColor]};
+        errorAttrs  = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemOrangeColor]};
+        textAttrs   = @{NSFontAttributeName: font, NSForegroundColorAttributeName: [NSColor systemGrayColor]};
     }
 }
 
