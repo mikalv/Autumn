@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ReplWindowController : NSWindowController
+@interface ReplWindowController : NSWindowController <NSTextFieldDelegate>
 
 + (instancetype) sharedInstance;
 

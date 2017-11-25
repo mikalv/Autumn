@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ReplWindowController">
             <connections>
+                <outlet property="inputField" destination="a9i-84-bNb" id="860-Vv-kyY"/>
                 <outlet property="outputView" destination="PIm-ym-ow7" id="EIG-RF-wph"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -79,6 +80,7 @@
                                     </textFieldCell>
                                     <connections>
                                         <action selector="runString:" target="-2" id="5UX-Og-06o"/>
+                                        <outlet property="delegate" destination="-2" id="xri-C7-zhE"/>
                                     </connections>
                                 </textField>
                             </subviews>

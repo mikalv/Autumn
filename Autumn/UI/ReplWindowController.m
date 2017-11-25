@@ -17,7 +17,11 @@ static NSDateFormatter* nowFormatter;
 
 @implementation ReplWindowController {
     __weak IBOutlet NSTextView* outputView;
+    __weak IBOutlet NSTextField* inputField;
     NSMutableAttributedString* preLogged;
+    
+    NSMutableArray* history;
+    NSInteger historyIndex;
 }
 
 + (void) initialize {
@@ -50,12 +54,16 @@ static NSDateFormatter* nowFormatter;
 - (void) windowDidLoad {
     [super windowDidLoad];
     
+    history = [NSMutableArray array];
+    
     if (preLogged) {
         [outputView.textStorage appendAttributedString: preLogged];
         preLogged = nil;
         
         [outputView scrollRangeToVisible:NSMakeRange(outputView.textStorage.length, 0)];
     }
+    
+    inputField.textColor = inputAttrs[NSForegroundColorAttributeName];
 }
 
 - (void) logString:(NSString*)str {
@@ -71,6 +79,8 @@ static NSDateFormatter* nowFormatter;
 - (IBAction) runString:(NSTextField*)sender {
     NSString* input = sender.stringValue;
     sender.stringValue = @"";
+    
+    [self addToHistory: input];
     
     [self add: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"\n$ %@\n", input]  attributes:inputAttrs]];
     
@@ -97,6 +107,44 @@ static NSDateFormatter* nowFormatter;
         
         [preLogged appendAttributedString: stamped];
     }
+}
+
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+    if (commandSelector == @selector(moveUp:)) {
+        [self goPreviousInHistory];
+        return YES;
+    }
+    else if (commandSelector == @selector(moveDown:)) {
+        [self goNextInHistory];
+        return YES;
+    }
+    return NO;
+}
+
+- (void) addToHistory:(NSString*)str {
+    [history addObject: str];
+    historyIndex = history.count;
+}
+
+- (void) goNextInHistory {
+    [self tryHistoryIndex: historyIndex + 1];
+}
+
+- (void) goPreviousInHistory {
+    [self tryHistoryIndex: historyIndex - 1];
+}
+
+- (void) tryHistoryIndex:(NSInteger)maybeHistoryIndex {
+    if (maybeHistoryIndex < 0 || maybeHistoryIndex > history.count)
+        return;
+    
+    historyIndex = maybeHistoryIndex;
+    NSString* str = (maybeHistoryIndex == history.count) ? @"" : history[maybeHistoryIndex];
+    
+    NSRange range = inputField.currentEditor.selectedRange;
+    range.length = 0;
+    inputField.stringValue = str;
+    inputField.currentEditor.selectedRange = range;
 }
 
 @end
