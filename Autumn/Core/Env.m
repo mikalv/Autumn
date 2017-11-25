@@ -10,17 +10,20 @@
 #import "Hotkey.h"
 #import "Keycodes.h"
 #import "JS.h"
+#import "NotificationManager.h"
 
 @implementation Env
 
 + (void) setupOnce {
     [Keycodes setupOnce];
     [Hotkey setupOnce];
+    [NotificationManager setupOnce];
 }
 
 + (void) reset {
     [Keycodes reset];
     [Hotkey reset];
+    [NotificationManager reset];
     [JS reset];
 }
 

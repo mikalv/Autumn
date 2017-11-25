@@ -12,4 +12,9 @@
 
 + (instancetype) sharedInstance;
 
+- (void) logError:(NSString*)errorMessage
+         location:(NSString*)errorLocation;
+
+- (void) logString:(NSString*)str;
+
 @end

@@ -15,9 +15,13 @@
 #import "Alert.h"
 #import "Autumn.h"
 #import "Env.h"
+#import "NotificationManager.h"
+#import "ReplWindowController.h"
 
 static JSContext* ctx;
 static NSMutableArray<NSString*>* requireStack;
+
+@implementation JS
 
 static JSValue* loadFile(NSString* path) {
     if (![path hasSuffix: @".js"]) path = [path stringByAppendingPathExtension: @"js"];
@@ -27,6 +31,9 @@ static JSValue* loadFile(NSString* path) {
     __autoreleasing NSError* error;
     NSString* script = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     if (!script) {
+        [JS showError: [NSString stringWithFormat:@"Error loading config file: %@", path]
+             location: error.localizedDescription];
+        
         NSLog(@"error loading file at [%@]: %@", path, error);
         return nil;
     }
@@ -37,8 +44,6 @@ static JSValue* loadFile(NSString* path) {
     
     return result;
 }
-
-@implementation JS
 
 + (void) runConfig {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -51,6 +56,27 @@ static JSValue* loadFile(NSString* path) {
     return [ctx evaluateScript: str].toString;
 }
 
++ (void) showError:(NSString*)errorMessage location:(NSString*)errorLocation {
+    [[ReplWindowController sharedInstance] logError: errorMessage
+                                           location: errorLocation];
+    
+    NSUserNotification* note = [[NSUserNotification alloc] init];
+    note.title = @"Autumn script error";
+    note.subtitle = errorMessage;
+    note.informativeText = errorLocation;
+    
+    [NotificationManager deliverNotification:note
+                                     clicked:^{
+                                         [[ReplWindowController sharedInstance] showWindow: nil];
+                                     }
+                                   forceShow:^BOOL{
+                                       return !(NSApp.isActive
+                                                && [ReplWindowController sharedInstance].windowLoaded
+                                                && [ReplWindowController sharedInstance].window.isKeyWindow);
+                                   }
+                                  resettable:NO];
+}
+
 + (void) reset {
     requireStack = [NSMutableArray array];
     
@@ -58,8 +84,9 @@ static JSValue* loadFile(NSString* path) {
     ctx = [[JSContext alloc] initWithVirtualMachine: vm];
     
     ctx.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-        NSLog(@"JS exception: %@\n%@:%@\n%@", exception, exception[@"line"], exception[@"column"], exception[@"stack"]);
-        [Alert show:[NSString stringWithFormat:@"Config error\n%@\n%@ %@:%@", exception.toString, requireStack.lastObject, exception[@"line"], exception[@"column"]] duration:@5];
+        NSString* errorMessage = exception.toString;
+        NSString* errorLocation = [NSString stringWithFormat:@"%@ %@:%@", [requireStack.lastObject lastPathComponent], exception[@"line"], exception[@"column"]];
+        [self showError:errorMessage location:errorLocation];
     };
     
     ctx[@"Autumn"] = [Autumn class];
@@ -79,7 +106,7 @@ static JSValue* loadFile(NSString* path) {
             if (!skippedTab) skippedTab = YES; else [s appendString: @"\t"];
             [s appendString: arg.toString];
         }
-        NSLog(@"CONSOLE.LOG: %@", s);
+        [[ReplWindowController sharedInstance] logString: s];
     };
 }
 
