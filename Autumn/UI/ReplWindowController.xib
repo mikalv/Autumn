@@ -52,10 +52,19 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="deE-Dm-WFf">
-                        <rect key="frame" x="0.0" y="36" width="480" height="5"/>
+                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-hb-r3y" userLabel="Line Background">
+                        <rect key="frame" x="0.0" y="38" width="480" height="1"/>
+                        <view key="contentView" id="tQa-72-2eH">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </box>
-                    <box boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="bWj-se-KqI">
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="deE-Dm-WFf" userLabel="Line">
+                        <rect key="frame" x="10" y="36" width="460" height="5"/>
+                    </box>
+                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="bWj-se-KqI">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="38"/>
                         <view key="contentView" id="Upj-qZ-e6H">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="38"/>
@@ -85,15 +94,19 @@
                     </box>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="deE-Dm-WFf" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" id="4bn-j8-r6f"/>
+                    <constraint firstItem="deE-Dm-WFf" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" constant="-20" id="4bn-j8-r6f"/>
                     <constraint firstItem="Upj-qZ-e6H" firstAttribute="top" secondItem="deE-Dm-WFf" secondAttribute="bottom" id="Gm8-Db-kRn"/>
+                    <constraint firstItem="sB4-hb-r3y" firstAttribute="height" secondItem="deE-Dm-WFf" secondAttribute="height" id="OjO-rz-6YD"/>
                     <constraint firstItem="BdY-vw-3dZ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="SKK-it-cbF"/>
                     <constraint firstAttribute="bottom" secondItem="bWj-se-KqI" secondAttribute="bottom" id="XP0-SW-DY7"/>
                     <constraint firstItem="deE-Dm-WFf" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Yn9-Sk-eFe"/>
                     <constraint firstItem="bWj-se-KqI" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="cUb-iu-pvY"/>
                     <constraint firstItem="BdY-vw-3dZ" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="cyq-ON-ZC4"/>
                     <constraint firstItem="bWj-se-KqI" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" id="jfQ-8Y-GmF"/>
+                    <constraint firstItem="sB4-hb-r3y" firstAttribute="centerX" secondItem="deE-Dm-WFf" secondAttribute="centerX" id="lDD-7A-wux"/>
+                    <constraint firstItem="sB4-hb-r3y" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" id="q29-GR-f3h"/>
                     <constraint firstItem="deE-Dm-WFf" firstAttribute="top" secondItem="BdY-vw-3dZ" secondAttribute="bottom" id="sVZ-W8-t75"/>
+                    <constraint firstItem="sB4-hb-r3y" firstAttribute="centerY" secondItem="deE-Dm-WFf" secondAttribute="centerY" id="v5n-Ol-NZg"/>
                     <constraint firstItem="BdY-vw-3dZ" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" id="xf8-Ax-S8k"/>
                 </constraints>
             </view>
