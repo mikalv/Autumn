@@ -217,4 +217,32 @@ cleanup:
     [self setSize: frame.size];
 }
 
++ (NSArray*) visibleWindows {
+    return [FnUtils filter:[Window allWindows] with:^BOOL(Window* win) {
+        return win.isVisible;
+    }];
+}
+
+- (BOOL) focus {
+    return [self becomeMain] && [self.app internal_bringToFront:NO];
+}
+
++ (NSArray*) orderedWindows {
+    NSArray* winids = [self orderedWindowIDs];
+    NSArray* allWindows = [Window allWindows];
+    NSMutableArray<Window*>* orderedWindows = [NSMutableArray array];
+    
+    for (NSNumber* winid in winids) {
+        Window* win = [FnUtils findIn:allWindows where:^BOOL(Window* win) {
+            return [win.windowID isEqualToNumber: winid];
+        }];
+        
+        if (win) {
+            [orderedWindows addObject: win];
+        }
+    }
+    
+    return orderedWindows;
+}
+
 @end

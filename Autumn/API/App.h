@@ -44,4 +44,7 @@
 @end
 
 @interface App : NSObject <JSExport_App>
+
+- (BOOL) internal_bringToFront:(BOOL)allWindows;
+
 @end
