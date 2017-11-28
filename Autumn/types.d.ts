@@ -17,23 +17,9 @@ declare global {
         static show(msg: string, options?: AlertOptions): void;
     }
     
-    interface HotkeyModifiers {
-        cmd?:   boolean;
-        ctrl?:  boolean;
-        alt?:   boolean;
-        shift?: boolean;
-    }
-    
-    interface HotkeyOptions {
-    key: string;
-    mods: HotkeyModifiers;
-        pressed?: () => void;
-        released?: () => void;
-    }
-    
     class Hotkey {
         
-        constructor(options: HotkeyOptions): Hotkey;
+        constructor(options: { key: string; mods: {cmd?: boolean, ctrl?: boolean, alt?: boolean, shift?: boolean}; pressed?: () => void; released?: () => void; });
         
         enable(): boolean;
         disable(): void;
