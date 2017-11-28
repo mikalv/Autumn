@@ -40,6 +40,12 @@ declare global {
         
     }
     
+    class Keyboard {
+        
+        static layoutChanged(callback: () => void): void;
+        
+    }
+    
     class App {
         /**
          * Manipulate running applications.

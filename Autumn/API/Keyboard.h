@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol JSExport_Keycodes <JSExport>
+@protocol JSExport_Keyboard <JSExport>
 
-+ (void) setInputSourceChangedHandler:(JSValue*)fn;
++ (void) layoutChanged:(JSValue*)fn;
 
 @end
 
-@interface Keycodes : NSObject <JSExport_Keycodes>
+@interface Keyboard : NSObject <JSExport_Keyboard>
 
 + (void) setupOnce;
 + (void) reset;
-+ (NSDictionary<NSString*, NSNumber*>*) map;
++ (NSDictionary<NSString*, NSNumber*>*) keyCodes;
 
 @end

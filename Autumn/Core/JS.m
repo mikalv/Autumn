@@ -11,7 +11,7 @@
 #import "Window.h"
 #import "App.h"
 #import "Hotkey.h"
-#import "Keycodes.h"
+#import "Keyboard.h"
 #import "Alert.h"
 #import "Autumn.h"
 #import "Env.h"
@@ -89,11 +89,19 @@ static JSValue* loadFile(NSString* path) {
         [self showError:errorMessage location:errorLocation];
     };
     
-    ctx[@"Autumn"] = [Autumn class];
-    ctx[@"Window"] = [Window class];
-    ctx[@"App"] = [App class];
-    ctx[@"Hotkey"] = [Hotkey class];
-    ctx[@"Alert"] = [Alert class];
+    NSArray<Class>* classes = @[[Autumn class],
+                                [Window class],
+                                [App class],
+                                [Hotkey class],
+                                [Keyboard class],
+                                [Alert class],
+                                ];
+    
+    for (Class cls in classes) {
+        ctx[[cls className]] = cls;
+    }
+    
+    ctx[@"Win"] = ctx[@"Window"];
     
     ctx[@"loadFile"] = ^(JSValue* relativePath) {
         return loadFile(relativePath.toString);

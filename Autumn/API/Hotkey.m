@@ -7,7 +7,7 @@
 //
 
 #import "Hotkey.h"
-#import "Keycodes.h"
+#import "Keyboard.h"
 #import <Carbon/Carbon.h>
 
 @implementation Hotkey {
@@ -50,7 +50,7 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
 - (instancetype) initWithMap:(JSValue*)spec {
     if (self = [super init]) {
         NSString* key = [spec[@"key"] toString];
-        _keycode = [[Keycodes map][key] unsignedIntValue];
+        _keycode = [[Keyboard keyCodes][key] unsignedIntValue];
         
         JSValue* mods = spec[@"mods"];
         if ([mods[@"cmd"] toBool])   _mods |= cmdKey;
