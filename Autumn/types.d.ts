@@ -9,12 +9,8 @@ declare global {
         static showRepl(): void;
     }
     
-    interface AlertOptions {
-        duration?: number;
-    }
-    
     class Alert {
-        static show(msg: string, options?: AlertOptions): void;
+        static show(msg: string, options?: { duration?: number; }): void;
     }
     
     class Hotkey {
