@@ -680,7 +680,7 @@
         </menu>
         <menu id="xMP-BV-cjp">
             <items>
-                <menuItem title="Run Config Script" id="ySN-43-EAT">
+                <menuItem title="Run User Configs" id="ySN-43-EAT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="runScript:" target="Voe-Tx-rLC" id="byp-n6-EKz"/>
