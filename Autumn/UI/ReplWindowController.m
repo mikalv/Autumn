@@ -141,8 +141,7 @@ static NSDateFormatter* nowFormatter;
     historyIndex = maybeHistoryIndex;
     NSString* str = (maybeHistoryIndex == history.count) ? @"" : history[maybeHistoryIndex];
     
-    NSRange range = inputField.currentEditor.selectedRange;
-    range.length = 0;
+    NSRange range = NSMakeRange(str.length, 0);
     inputField.stringValue = str;
     inputField.currentEditor.selectedRange = range;
 }
