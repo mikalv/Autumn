@@ -11,11 +11,15 @@
 
 @class App;
 @class Window;
+@class Screen;
 
 @protocol JSExport_Window <JSExport>
 
 + (Window*) focusedWindow;
-+ (NSArray<NSNumber*>*) orderedWindowIDs;
++ (NSArray*) orderedWindows;
++ (NSArray<Window*>*) allWindows;
+
++ (Window*) windowForID:(NSNumber*)winid;
 
 - (NSString*) title;
 - (NSString*) subrole;
@@ -23,7 +27,9 @@
 - (BOOL) isStandardWindow;
 - (NSPoint) topLeft;
 - (NSSize) size;
+- (void) setTopLeft:(NSPoint)thePoint;
 - (BOOL) isEqual:(Window*)object;
+- (void) setSize:(NSSize)theSize;
 - (BOOL) close;
 - (BOOL) setFullScreen:(BOOL)shouldBeFullScreen;
 - (NSNumber*) isFullScreen;
@@ -35,6 +41,31 @@
 - (BOOL) becomeMain;
 - (NSNumber*) windowID;
 - (App*) app;
+
+- (NSRect) frame;
+- (void) setFrame:(NSRect)frame;
+
+- (NSArray*) otherWindows:(BOOL)allScreens;
+
++ (NSArray*) visibleWindows;
+
+- (BOOL) focus;
+
+- (Screen*) screen;
+
+- (void) maximize;
+
+- (NSArray*) windowsToEast;
+- (NSArray*) windowsToNorth;
+- (NSArray*) windowsToWest;
+- (NSArray*) windowsToSouth;
+
+- (void) focusFiristWindowToEast;
+- (void) focusFiristWindowToNorth;
+- (void) focusFiristWindowToWest;
+- (void) focusFiristWindowToSouth;
+
+- (void) moveToPercentOfScreen:(NSRect)unit;
 
 @end
 

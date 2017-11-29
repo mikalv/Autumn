@@ -10,6 +10,8 @@
 #import "Window.h"
 #import "App.h"
 #import "FnUtils.h"
+#import "Screen.h"
+#import "Math.h"
 
 @implementation Window {
     AXUIElementRef _win;
@@ -217,6 +219,14 @@ cleanup:
     [self setSize: frame.size];
 }
 
+- (NSArray*) otherWindows:(BOOL /* default: false */)allScreens {
+    return [FnUtils filter:[Window visibleWindows] with:^BOOL(Window* win) {
+        if ([self isEqual: win]) return NO;
+        if (!allScreens && [[self screen] isEqual: [win screen]]) return NO;
+        return YES;
+    }];
+}
+
 + (NSArray*) visibleWindows {
     return [FnUtils filter:[Window allWindows] with:^BOOL(Window* win) {
         return win.isVisible;
@@ -245,4 +255,94 @@ cleanup:
     return orderedWindows;
 }
 
+- (Screen*) screen {
+    NSRect windowFrame = [self frame];
+    
+    CGFloat lastVolume = 0;
+    Screen* lastScreen;
+    
+    for (Screen* screen in [Screen allScreens]) {
+        NSRect screenFrame = [screen fullFrame];
+        NSRect intersection = NSIntersectionRect(windowFrame, screenFrame);
+        CGFloat volume = intersection.size.width * intersection.size.height;
+        
+        if (volume > lastVolume) {
+            lastVolume = volume;
+            lastScreen = screen;
+        }
+    }
+    
+    return lastScreen;
+}
+
+- (void) maximize {
+    NSRect screenRect = self.screen.frame;
+    [self setFrame: screenRect];
+}
+
+- (NSArray*) windowsInDirection:(int)numRotations {
+    // assume looking to east
+    
+    // use the score distance/cos(A/2), where A is the angle by which it
+    // differs from the straight line in the direction you're looking
+    // for. (may have to manually prevent division by zero.)
+    
+    NSPoint startingPoint = [Math midPointOfRect: [self frame]];
+    
+    NSArray* otherWindows = [FnUtils filter:[Window allWindows] with:^BOOL(Window* win) {
+        return (win.isVisible && win.isStandardWindow && ![self isEqual: win]);
+    }];
+    
+    NSMutableArray* orderedWindows = [NSMutableArray array];
+    
+    int position = 0;
+    for (Window* win in otherWindows) {
+        NSPoint otherPoint = [Math rotateCounterClockwise:[Math midPointOfRect: [win frame]]
+                                                   around:startingPoint
+                                                    times:numRotations];
+        
+        NSPoint delta = NSMakePoint(otherPoint.x - startingPoint.x,
+                                    otherPoint.y - startingPoint.y);
+        
+        if (delta.x > 0) {
+            double angle = atan2(delta.y, delta.x);
+            double distance = hypot(delta.x, delta.y);
+            double angleDiff = -angle;
+            double score = (distance / cos(angleDiff / 2.0)) + (++position);
+            
+            [orderedWindows addObject: @{@"score": @(score),
+                                         @"win": win}];
+        }
+        
+    }
+    
+    [orderedWindows sortUsingComparator:^NSComparisonResult(NSDictionary* _Nonnull a, NSDictionary* _Nonnull b) {
+        return [a[@"score"] compare: b[@"score"]];
+    }];
+    
+    return [FnUtils map:orderedWindows with:^Window*(NSDictionary* dict) {
+        return dict[@"win"];
+    }];
+}
+
+- (NSArray*) windowsToEast  { return [self windowsInDirection: 0]; }
+- (NSArray*) windowsToNorth { return [self windowsInDirection: 1]; }
+- (NSArray*) windowsToWest  { return [self windowsInDirection: 2]; }
+- (NSArray*) windowsToSouth { return [self windowsInDirection: 3]; }
+
+- (void) focusFiristWindowToEast  { [[self windowsToEast].firstObject focus]; }
+- (void) focusFiristWindowToNorth { [[self windowsToNorth].firstObject focus]; }
+- (void) focusFiristWindowToWest  { [[self windowsToWest].firstObject focus]; }
+- (void) focusFiristWindowToSouth { [[self windowsToSouth].firstObject focus]; }
+
+- (void) moveToPercentOfScreen:(NSRect)unit {
+    NSRect screenRect = [[self screen] frame];
+    
+    [self setFrame:NSMakeRect(screenRect.origin.x + (unit.origin.x * screenRect.size.width),
+                              screenRect.origin.y + (unit.origin.y * screenRect.size.height),
+                              unit.size.width * screenRect.size.width,
+                              unit.size.height * screenRect.size.height)];
+}
+
 @end
+
