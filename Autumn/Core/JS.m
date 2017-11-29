@@ -7,7 +7,6 @@
 //
 
 #import "JS.h"
-#import <JavaScriptCore/JavaScriptCore.h>
 #import "Window.h"
 #import "App.h"
 #import "Hotkey.h"
@@ -116,6 +115,10 @@ static JSValue* loadFile(NSString* path) {
         }
         [[ReplWindowController sharedInstance] logString: s];
     };
+}
+
++ (JSContext*) context {
+    return ctx;
 }
 
 @end

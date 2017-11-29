@@ -24,7 +24,7 @@ declare global {
     
     class Keyboard {
         
-        static layoutChanged(callback: () => void): void;
+        static layoutChanged: () => void;
         
     }
     

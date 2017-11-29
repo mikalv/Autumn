@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface JS : NSObject
 
 + (void) runConfig;
 + (NSString*) runString:(NSString*)str;
 + (void) reset;
+
++ (JSContext*) context;
 
 @end
