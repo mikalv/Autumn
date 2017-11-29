@@ -13,6 +13,7 @@
 #import "Keyboard.h"
 #import "Alert.h"
 #import "Autumn.h"
+#import "Screen.h"
 #import "Env.h"
 #import "NotificationManager.h"
 #import "ReplWindowController.h"
@@ -94,6 +95,7 @@ static JSValue* loadFile(NSString* path) {
                                 [Hotkey class],
                                 [Keyboard class],
                                 [Alert class],
+                                [Screen class],
                                 ];
     
     for (Class cls in classes) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9402441B1FCE1BA60031DD90 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9402441A1FCE1BA60031DD90 /* Screen.m */; };
 		943B011A1FBDDC4600EA17A2 /* FnUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 943B01191FBDDC4600EA17A2 /* FnUtils.m */; };
 		944173EC1FC7E78C00330ABA /* Env.m in Sources */ = {isa = PBXBuildFile; fileRef = 944173EB1FC7E78C00330ABA /* Env.m */; };
 		944173F21FC8846200330ABA /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 944173F11FC8846200330ABA /* NotificationManager.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		940244191FCE1BA60031DD90 /* Screen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
+		9402441A1FCE1BA60031DD90 /* Screen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
 		943B01181FBDDC4600EA17A2 /* FnUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FnUtils.h; sourceTree = "<group>"; };
 		943B01191FBDDC4600EA17A2 /* FnUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FnUtils.m; sourceTree = "<group>"; };
 		944173EA1FC7E78C00330ABA /* Env.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Env.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				94FDB72B1FC4E1E0008F094F /* Hotkey.m */,
 				9451F2E41FBCB2A70084A2FD /* App.h */,
 				9451F2E51FBCB2A70084A2FD /* App.m */,
+				940244191FCE1BA60031DD90 /* Screen.h */,
+				9402441A1FCE1BA60031DD90 /* Screen.m */,
 				94F36B5B1FC7629500C3FDEF /* Alert.h */,
 				94F36B5C1FC7629500C3FDEF /* Alert.m */,
 			);
@@ -238,6 +243,7 @@
 			files = (
 				94FDB72C1FC4E1E0008F094F /* Hotkey.m in Sources */,
 				94F36B681FC7A17100C3FDEF /* Autumn.m in Sources */,
+				9402441B1FCE1BA60031DD90 /* Screen.m in Sources */,
 				94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */,
 				94FDB7291FC34C09008F094F /* JS.m in Sources */,
 				94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */,
