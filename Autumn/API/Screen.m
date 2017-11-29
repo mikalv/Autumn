@@ -8,6 +8,7 @@
 
 #import "Screen.h"
 #import "FnUtils.h"
+#import "Math.h"
 
 @implementation Screen {
     NSScreen* _screen;
@@ -103,16 +104,14 @@
     NSMutableArray* otherScreens = [allScreens mutableCopy];
     [otherScreens removeObject: self];
     
-    NSRect myFullFrame = self.fullFrame;
-    NSPoint startingPoint = NSMakePoint(NSMidX(myFullFrame), NSMidY(myFullFrame));
+    NSPoint startingPoint = [Math midPointOfRect: [self fullFrame]];
     
     Screen* screenWithLowestScore;
     double lastScore = CGFLOAT_MAX; // only here to silence warning
     
     for (Screen* maybeScreen in otherScreens) {
-        NSRect otherFullFrame = maybeScreen.fullFrame;
-        NSPoint otherPoint = NSMakePoint(NSMidX(otherFullFrame), NSMidY(otherFullFrame));
-        otherPoint = rotateccw(otherPoint, startingPoint, numRotations);
+        NSPoint otherPoint = [Math midPointOfRect: [maybeScreen fullFrame]];
+        otherPoint = [Math rotateCounterClockwise:otherPoint around:startingPoint times:numRotations];
         
         NSPoint delta = NSMakePoint(otherPoint.x - startingPoint.x,
                                     otherPoint.y - startingPoint.y);
@@ -131,16 +130,6 @@
     }
     
     return screenWithLowestScore;
-}
-
-static NSPoint rotateccw(NSPoint point, NSPoint aroundPoint, int times) {
-    NSPoint p = point;
-    for (int i = 1; i < times; i++) {
-        CGFloat px = p.x;
-        p.x = (aroundPoint.x - (p.y - aroundPoint.y));
-        p.y = (aroundPoint.y + (px - aroundPoint.x));
-    }
-    return p;
 }
 
 - (Screen*) screenToEast  { return [self firstScreenInDirection: 0]; }
