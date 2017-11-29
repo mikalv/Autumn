@@ -16,44 +16,48 @@
 @protocol JSExport_Window <JSExport>
 
 + (Window*) focusedWindow;
+
++ (NSArray*) allWindows;
++ (NSArray*) visibleWindows;
 + (NSArray*) orderedWindows;
-+ (NSArray<Window*>*) allWindows;
 
 + (Window*) windowForID:(NSNumber*)winid;
+- (NSNumber*) windowID;
+
+- (NSArray*) otherWindows:(BOOL)allScreens;
+
+- (BOOL) isEqual:(Window*)object;
 
 - (NSString*) title;
 - (NSString*) subrole;
 - (NSString*) role;
-- (BOOL) isStandardWindow;
-- (NSPoint) topLeft;
-- (NSSize) size;
-- (void) setTopLeft:(NSPoint)thePoint;
-- (BOOL) isEqual:(Window*)object;
-- (void) setSize:(NSSize)theSize;
-- (BOOL) close;
-- (BOOL) setFullScreen:(BOOL)shouldBeFullScreen;
-- (NSNumber*) isFullScreen;
-- (BOOL) minimize;
-- (BOOL) unminimize;
-- (NSNumber*) isMinimized;
-- (NSNumber*) pid;
-- (BOOL) isVisible;
-- (BOOL) becomeMain;
-- (NSNumber*) windowID;
+
 - (App*) app;
+
+- (BOOL) isStandardWindow;
+- (NSNumber*) isFullScreen;
+- (NSNumber*) isMinimized;
+- (BOOL) isVisible;
+
+- (NSPoint) topLeft;
+- (void) setTopLeft:(NSPoint)thePoint;
+
+- (NSSize) size;
+- (void) setSize:(NSSize)theSize;
 
 - (NSRect) frame;
 - (void) setFrame:(NSRect)frame;
 
-- (NSArray*) otherWindows:(BOOL)allScreens;
+- (BOOL) close;
+- (BOOL) setFullScreen:(BOOL)shouldBeFullScreen;
+- (BOOL) minimize;
+- (BOOL) unminimize;
+- (void) maximize;
 
-+ (NSArray*) visibleWindows;
-
+- (BOOL) becomeMain;
 - (BOOL) focus;
 
 - (Screen*) screen;
-
-- (void) maximize;
 
 - (NSArray*) windowsToEast;
 - (NSArray*) windowsToNorth;
