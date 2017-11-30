@@ -29,17 +29,17 @@
 - (pid_t) pid;
 - (NSString*) kind;
 
-+ (BOOL) open:(NSString*)name;
-- (BOOL) activate:(BOOL)allWindows;
++ (void) open:(NSString*)name;
+- (void) activate:(BOOL)allWindows;
 
-- (BOOL) unhide;
-- (BOOL) hide;
+- (void) unhide;
+- (void) hide;
 
 - (void) kill;
 - (void) forceKill;
 
-- (BOOL) isHidden;
-- (BOOL) isUnresponsive;
+- (NSNumber*) isHidden;
+- (NSNumber*) isUnresponsive;
 
 @end
 

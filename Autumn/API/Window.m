@@ -82,8 +82,8 @@ static AXUIElementRef system_wide_element() {
     return [self getWindowProp: NSAccessibilityRoleAttribute];
 }
 
-- (BOOL) isStandardWindow {
-    return [[self subrole] isEqualToString: (NSString*)kAXStandardWindowSubrole];
+- (NSNumber*) isStandardWindow {
+    return [[self subrole] isEqualToString: (NSString*)kAXStandardWindowSubrole] ? @YES : @NO;
 }
 
 - (NSPoint) topLeft {
@@ -126,21 +126,21 @@ static AXUIElementRef system_wide_element() {
     CFRelease(intermediate);
 }
 
-- (BOOL) close {
-    BOOL worked = NO;
+- (void) close {
+//    BOOL worked = NO;
     AXUIElementRef button = NULL;
     
     if (AXUIElementCopyAttributeValue(_win, kAXCloseButtonAttribute, (CFTypeRef*)&button) != kAXErrorSuccess) goto cleanup;
     if (AXUIElementPerformAction(button, kAXPressAction) != kAXErrorSuccess) goto cleanup;
-    worked = YES;
+//    worked = YES;
     
 cleanup:
     if (button) CFRelease(button);
-    return worked;
+//    return worked;
 }
 
-- (BOOL) setFullScreen:(BOOL)shouldBeFullScreen {
-    return (AXUIElementSetAttributeValue(_win, CFSTR("AXFullScreen"), shouldBeFullScreen ? kCFBooleanTrue : kCFBooleanFalse) == kAXErrorSuccess);
+- (void) setFullScreen:(BOOL)shouldBeFullScreen {
+    AXUIElementSetAttributeValue(_win, CFSTR("AXFullScreen"), shouldBeFullScreen ? kCFBooleanTrue : kCFBooleanFalse);
 }
 
 - (NSNumber*) isFullScreen {
@@ -149,12 +149,12 @@ cleanup:
     return (__bridge NSNumber*)fullscreen;
 }
 
-- (BOOL) minimize {
-    return (AXUIElementSetAttributeValue(_win, (CFStringRef)(NSAccessibilityMinimizedAttribute), kCFBooleanTrue) == kAXErrorSuccess);
+- (void) minimize {
+    AXUIElementSetAttributeValue(_win, (CFStringRef)(NSAccessibilityMinimizedAttribute), kCFBooleanTrue);
 }
 
-- (BOOL) unminimize {
-    return (AXUIElementSetAttributeValue(_win, (CFStringRef)(NSAccessibilityMinimizedAttribute), kCFBooleanFalse) == kAXErrorSuccess);
+- (void) unminimize {
+    AXUIElementSetAttributeValue(_win, (CFStringRef)(NSAccessibilityMinimizedAttribute), kCFBooleanFalse);
 }
 
 - (NSNumber*) isMinimized {
@@ -169,12 +169,12 @@ cleanup:
     return @(pid);
 }
 
-- (BOOL) isVisible {
-    return !self.app.isHidden && !self.isMinimized;
+- (NSNumber*) isVisible {
+    return (!self.app.isHidden && !self.isMinimized) ? @YES : @NO;
 }
 
-- (BOOL) becomeMain {
-    return (AXUIElementSetAttributeValue(_win, (CFStringRef)NSAccessibilityMainAttribute, kCFBooleanTrue) == kAXErrorSuccess);
+- (void) becomeMain {
+    AXUIElementSetAttributeValue(_win, (CFStringRef)NSAccessibilityMainAttribute, kCFBooleanTrue);
 }
 
 - (NSNumber*) windowID {
@@ -229,12 +229,13 @@ cleanup:
 
 + (NSArray*) visibleWindows {
     return [FnUtils filter:[Window allWindows] with:^BOOL(Window* win) {
-        return win.isVisible;
+        return [win isVisible].boolValue;
     }];
 }
 
-- (BOOL) focus {
-    return [self becomeMain] && [self.app internal_bringToFront:NO];
+- (void) focus {
+    [self becomeMain];
+    [self.app internal_bringToFront:NO];
 }
 
 + (NSArray*) orderedWindows {

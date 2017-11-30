@@ -76,11 +76,11 @@
 
 - (NSArray<Window*>*) visibleWindows {
     return [FnUtils filter:[self allWindows] with:^BOOL(Window* win) {
-        return win.isVisible;
+        return [win isVisible].boolValue;
     }];
 }
 
-- (BOOL) isUnresponsive {
+- (NSNumber*) isUnresponsive {
     // lol apple
     typedef int CGSConnectionID;
     CG_EXTERN CGSConnectionID CGSMainConnectionID(void);
@@ -94,7 +94,7 @@
 #pragma clang diagnostic pop
     
     CGSConnectionID conn = CGSMainConnectionID();
-    return CGSEventIsAppUnresponsive(conn, &psn);
+    return CGSEventIsAppUnresponsive(conn, &psn) ? @YES : @NO;
 }
 
 - (NSString*) title {
@@ -105,12 +105,12 @@
     return [_runningApp bundleIdentifier];
 }
 
-- (BOOL) unhide {
-    return (AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanFalse) == kAXErrorSuccess);
+- (void) unhide {
+    AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanFalse);
 }
 
-- (BOOL) hide {
-    return (AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanTrue) == kAXErrorSuccess);
+- (void) hide {
+    AXUIElementSetAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, kCFBooleanTrue);
 }
 
 - (void) kill {
@@ -121,10 +121,10 @@
     [_runningApp forceTerminate];
 }
 
-- (BOOL) isHidden {
+- (NSNumber*) isHidden {
     CFBooleanRef isHidden;
     AXUIElementCopyAttributeValue(_app, (CFStringRef)NSAccessibilityHiddenAttribute, (CFTypeRef*)&isHidden);
-    return CFBooleanGetValue(isHidden);
+    return (__bridge_transfer NSNumber*)isHidden;
 }
 
 - (pid_t) pid {
@@ -139,18 +139,22 @@
     }
 }
 
-+ (BOOL) open:(NSString*)name {
-    return [[NSWorkspace sharedWorkspace] launchApplication: name];
++ (void) open:(NSString*)name {
+    [[NSWorkspace sharedWorkspace] launchApplication: name];
 }
 
-- (BOOL) activate:(BOOL)allWindows {
+- (void) activate:(BOOL)allWindows {
     if ([self isUnresponsive])
-        return false;
+        return;
     
     Window* win = [self internal_focusedWindow];
-    return (win
-            ? ([win becomeMain] && [self internal_bringToFront:allWindows])
-            : [self internal_activate: allWindows]);
+    if (win) {
+        [win becomeMain];
+        [self internal_bringToFront:allWindows];
+    }
+    else {
+        [self internal_activate: allWindows];
+    }
 }
 
 // a few private methods for -activate

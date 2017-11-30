@@ -34,10 +34,10 @@
 
 - (App*) app;
 
-- (BOOL) isStandardWindow;
+- (NSNumber*) isStandardWindow;
 - (NSNumber*) isFullScreen;
 - (NSNumber*) isMinimized;
-- (BOOL) isVisible;
+- (NSNumber*) isVisible;
 
 - (NSPoint) topLeft;
 - (void) setTopLeft:(NSPoint)thePoint;
@@ -48,14 +48,14 @@
 - (NSRect) frame;
 - (void) setFrame:(NSRect)frame;
 
-- (BOOL) close;
-- (BOOL) setFullScreen:(BOOL)shouldBeFullScreen;
-- (BOOL) minimize;
-- (BOOL) unminimize;
+- (void) close;
+- (void) setFullScreen:(BOOL)shouldBeFullScreen;
+- (void) minimize;
+- (void) unminimize;
 - (void) maximize;
 
-- (BOOL) becomeMain;
-- (BOOL) focus;
+- (void) becomeMain;
+- (void) focus;
 
 - (Screen*) screen;
 
