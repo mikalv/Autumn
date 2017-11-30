@@ -16,6 +16,8 @@
 + (void) showDocs;
 + (void) showRepl;
 
++ (JSValue*) loadFile:(NSString*)path;
+
 @end
 
 @interface Autumn : NSObject <JSExport_Autumn>

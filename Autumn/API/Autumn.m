@@ -33,4 +33,8 @@
     [[ReplWindowController sharedInstance] showWindow: nil];
 }
 
++ (JSValue*) loadFile:(NSString*)path {
+    return [JS loadFile: path];
+}
+
 @end

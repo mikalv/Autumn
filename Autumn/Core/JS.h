@@ -11,6 +11,8 @@
 
 @interface JS : NSObject
 
++ (JSValue*) loadFile:(NSString*)path;
+
 + (void) runConfig;
 + (NSString*) runString:(NSString*)str;
 + (void) reset;

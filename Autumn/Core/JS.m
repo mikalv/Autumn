@@ -23,7 +23,7 @@ static NSMutableArray<NSString*>* requireStack;
 
 @implementation JS
 
-static JSValue* loadFile(NSString* path) {
++ (JSValue*) loadFile:(NSString*)path {
     if (![path hasSuffix: @".js"]) path = [path stringByAppendingPathExtension: @"js"];
     if (![path hasPrefix: @"/"])   path = [requireStack.lastObject.stringByDeletingLastPathComponent stringByAppendingPathComponent: path];
     path = path.stringByStandardizingPath;
@@ -48,7 +48,7 @@ static JSValue* loadFile(NSString* path) {
 + (void) runConfig {
     dispatch_async(dispatch_get_main_queue(), ^{
         [Env reset];
-        loadFile(@"~/.autumnjs/init.js".stringByStandardizingPath);
+        [self loadFile: @"~/.autumnjs/init.js".stringByStandardizingPath];
     });
 }
 
@@ -103,10 +103,6 @@ static JSValue* loadFile(NSString* path) {
     }
     
     ctx[@"Win"] = ctx[@"Window"];
-    
-    ctx[@"loadFile"] = ^(JSValue* relativePath) {
-        return loadFile(relativePath.toString);
-    };
     
     ctx[@"console"][@"log"] = ^{
         NSMutableString* s = [NSMutableString string];

@@ -18,9 +18,14 @@
 		9451F2E31FBC94410084A2FD /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E21FBC94410084A2FD /* Window.m */; };
 		9451F2E61FBCB2A70084A2FD /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E51FBCB2A70084A2FD /* App.m */; };
 		94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B5C1FC7629500C3FDEF /* Alert.m */; };
-		94F36B651FC77D7200C3FDEF /* types.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F36B641FC77D7100C3FDEF /* types.d.ts */; };
 		94F36B681FC7A17100C3FDEF /* Autumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B671FC7A17100C3FDEF /* Autumn.m */; };
 		94F8FD091FCF6B08009F5A77 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8FD081FCF6B08009F5A77 /* Math.m */; };
+		94F8FD221FD0920D009F5A77 /* App.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD1B1FD0920D009F5A77 /* App.d.ts */; };
+		94F8FD231FD0920D009F5A77 /* Autumn.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD1C1FD0920D009F5A77 /* Autumn.d.ts */; };
+		94F8FD241FD0920D009F5A77 /* Alert.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD1D1FD0920D009F5A77 /* Alert.d.ts */; };
+		94F8FD261FD0920D009F5A77 /* Window.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD1F1FD0920D009F5A77 /* Window.d.ts */; };
+		94F8FD271FD0920D009F5A77 /* Keyboard.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD201FD0920D009F5A77 /* Keyboard.d.ts */; };
+		94F8FD281FD0920D009F5A77 /* Hotkey.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD211FD0920D009F5A77 /* Hotkey.d.ts */; };
 		94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FDB71E1FC34BA1008F094F /* ReplWindowController.m */; };
 		94FDB7211FC34BA1008F094F /* ReplWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */; };
 		94FDB7251FC34BB0008F094F /* DocsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FDB7231FC34BB0008F094F /* DocsWindowController.m */; };
@@ -53,11 +58,16 @@
 		9451F2E51FBCB2A70084A2FD /* App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		94F36B5B1FC7629500C3FDEF /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		94F36B5C1FC7629500C3FDEF /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
-		94F36B641FC77D7100C3FDEF /* types.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = types.d.ts; sourceTree = "<group>"; };
 		94F36B661FC7A17100C3FDEF /* Autumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autumn.h; sourceTree = "<group>"; };
 		94F36B671FC7A17100C3FDEF /* Autumn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Autumn.m; sourceTree = "<group>"; };
 		94F8FD071FCF6B08009F5A77 /* Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		94F8FD081FCF6B08009F5A77 /* Math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
+		94F8FD1B1FD0920D009F5A77 /* App.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = App.d.ts; sourceTree = "<group>"; };
+		94F8FD1C1FD0920D009F5A77 /* Autumn.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = Autumn.d.ts; sourceTree = "<group>"; };
+		94F8FD1D1FD0920D009F5A77 /* Alert.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = Alert.d.ts; sourceTree = "<group>"; };
+		94F8FD1F1FD0920D009F5A77 /* Window.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = Window.d.ts; sourceTree = "<group>"; };
+		94F8FD201FD0920D009F5A77 /* Keyboard.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = Keyboard.d.ts; sourceTree = "<group>"; };
+		94F8FD211FD0920D009F5A77 /* Hotkey.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = Hotkey.d.ts; sourceTree = "<group>"; };
 		94FDB71D1FC34BA1008F094F /* ReplWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplWindowController.h; sourceTree = "<group>"; };
 		94FDB71E1FC34BA1008F094F /* ReplWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplWindowController.m; sourceTree = "<group>"; };
 		94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplWindowController.xib; sourceTree = "<group>"; };
@@ -103,16 +113,22 @@
 			children = (
 				94F36B661FC7A17100C3FDEF /* Autumn.h */,
 				94F36B671FC7A17100C3FDEF /* Autumn.m */,
+				94F8FD1C1FD0920D009F5A77 /* Autumn.d.ts */,
 				94F36B5B1FC7629500C3FDEF /* Alert.h */,
 				94F36B5C1FC7629500C3FDEF /* Alert.m */,
+				94F8FD1D1FD0920D009F5A77 /* Alert.d.ts */,
 				94FDB72A1FC4E1E0008F094F /* Hotkey.h */,
 				94FDB72B1FC4E1E0008F094F /* Hotkey.m */,
+				94F8FD211FD0920D009F5A77 /* Hotkey.d.ts */,
 				94FDB72D1FC5AC11008F094F /* Keyboard.h */,
 				94FDB72E1FC5AC11008F094F /* Keyboard.m */,
-				9451F2E11FBC94410084A2FD /* Window.h */,
-				9451F2E21FBC94410084A2FD /* Window.m */,
+				94F8FD201FD0920D009F5A77 /* Keyboard.d.ts */,
 				9451F2E41FBCB2A70084A2FD /* App.h */,
 				9451F2E51FBCB2A70084A2FD /* App.m */,
+				94F8FD1B1FD0920D009F5A77 /* App.d.ts */,
+				9451F2E11FBC94410084A2FD /* Window.h */,
+				9451F2E21FBC94410084A2FD /* Window.m */,
+				94F8FD1F1FD0920D009F5A77 /* Window.d.ts */,
 				940244191FCE1BA60031DD90 /* Screen.h */,
 				9402441A1FCE1BA60031DD90 /* Screen.m */,
 			);
@@ -155,17 +171,24 @@
 				944173EF1FC8704F00330ABA /* UI */,
 				944173ED1FC8702A00330ABA /* Core */,
 				944173EE1FC8704100330ABA /* API */,
-				943B01181FBDDC4600EA17A2 /* FnUtils.h */,
-				943B01191FBDDC4600EA17A2 /* FnUtils.m */,
-				94F8FD071FCF6B08009F5A77 /* Math.h */,
-				94F8FD081FCF6B08009F5A77 /* Math.m */,
-				94F36B641FC77D7100C3FDEF /* types.d.ts */,
+				94F8FD0A1FD0875D009F5A77 /* Helpers */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
 				9451F2D81FBBE5130084A2FD /* main.m */,
 				9451F2DA1FBBE5130084A2FD /* Autumn.entitlements */,
 			);
 			path = Autumn;
+			sourceTree = "<group>";
+		};
+		94F8FD0A1FD0875D009F5A77 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				943B01181FBDDC4600EA17A2 /* FnUtils.h */,
+				943B01191FBDDC4600EA17A2 /* FnUtils.m */,
+				94F8FD071FCF6B08009F5A77 /* Math.h */,
+				94F8FD081FCF6B08009F5A77 /* Math.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +200,7 @@
 			buildPhases = (
 				9451F2C81FBBE5130084A2FD /* Sources */,
 				9451F2C91FBBE5130084A2FD /* Frameworks */,
+				94AFC89E1FD0A75E0072C266 /* Run Script */,
 				9451F2CA1FBBE5130084A2FD /* Resources */,
 			);
 			buildRules = (
@@ -231,15 +255,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F8FD281FD0920D009F5A77 /* Hotkey.d.ts in Resources */,
 				9451F2D31FBBE5130084A2FD /* Assets.xcassets in Resources */,
+				94F8FD221FD0920D009F5A77 /* App.d.ts in Resources */,
+				94F8FD261FD0920D009F5A77 /* Window.d.ts in Resources */,
+				94F8FD271FD0920D009F5A77 /* Keyboard.d.ts in Resources */,
 				9451F2D61FBBE5130084A2FD /* MainMenu.xib in Resources */,
-				94F36B651FC77D7200C3FDEF /* types.d.ts in Resources */,
 				94FDB7261FC34BB0008F094F /* DocsWindowController.xib in Resources */,
+				94F8FD241FD0920D009F5A77 /* Alert.d.ts in Resources */,
+				94F8FD231FD0920D009F5A77 /* Autumn.d.ts in Resources */,
 				94FDB7211FC34BA1008F094F /* ReplWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94AFC89E1FD0A75E0072C266 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cat $SRCROOT/Autumn/API/*.d.ts > $BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/types.d.ts";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9451F2C81FBBE5130084A2FD /* Sources */ = {
