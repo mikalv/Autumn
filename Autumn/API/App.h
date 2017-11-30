@@ -18,7 +18,7 @@
 + (NSArray<App*>*) appsForBundleID:(NSString*)bundleIdentifier;
 + (NSArray<App*>*) runningApps;
 
-- (BOOL) isEqual:(App*)object;
+- (NSNumber*) equals:(App*)other;
 
 - (Window*) mainWindow;
 - (NSArray<Window*>*) allWindows;

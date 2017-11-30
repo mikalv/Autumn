@@ -37,6 +37,18 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     }
 }
 
+- (NSNumber*) equals:(Hotkey*)other {
+    return (self == other) ? @YES : @NO;
+}
+
+- (BOOL) isEqual:(id)other {
+    return [self equals: other].boolValue;
+}
+
+- (NSUInteger) hash {
+    return (NSUInteger)self;
+}
+
 + (Hotkey*) hotkeyForId:(UInt32)uid {
     return hotkeys[@(uid)];
 }

@@ -116,8 +116,18 @@ static AXUIElementRef system_wide_element() {
     CFRelease(positionStorage);
 }
 
-- (BOOL) isEqual:(Window*)object {
-    return ([object isKindOfClass: [Window class]] && CFEqual(_win, object->_win));
+- (NSNumber*) equals:(Window*)other {
+    if (self == other) return @YES;
+    if (![other isKindOfClass: [self class]]) return @NO;
+    return CFEqual(_win, other->_win) ? @YES : @NO;
+}
+
+- (BOOL) isEqual:(id)other {
+    return [self equals: other].boolValue;
+}
+
+- (NSUInteger) hash {
+    return CFHash(_win) + 1;
 }
 
 - (void) setSize:(NSSize)theSize {

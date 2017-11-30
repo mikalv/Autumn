@@ -26,7 +26,7 @@
 
 - (NSArray*) otherWindows:(BOOL)allScreens;
 
-- (BOOL) isEqual:(Window*)object;
+- (NSNumber*) equals:(Window*)other;
 
 - (NSString*) title;
 - (NSString*) subrole;

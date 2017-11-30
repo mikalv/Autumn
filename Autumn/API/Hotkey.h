@@ -14,8 +14,11 @@
 @protocol JSExport_Hotkey <JSExport>
 
 - (instancetype) initWithMap:(JSValue*)spec;
+
 - (NSNumber*) enable;
 - (void) disable;
+
+- (NSNumber*) equals:(Hotkey*)other;
 
 @end
 

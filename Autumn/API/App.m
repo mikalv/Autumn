@@ -49,8 +49,18 @@
     return apps;
 }
 
-- (BOOL) isEqual:(App*)object {
-    return ([object isKindOfClass: [App class]] && _pid == object->_pid);
+- (NSNumber*) equals:(App*)other {
+    if (self == other) return @YES;
+    if (![other isKindOfClass: [self class]]) return @NO;
+    return [_runningApp isEqual: other->_runningApp] ? @YES : @NO;
+}
+
+- (BOOL) isEqual:(id)other {
+    return [self equals: other].boolValue;
+}
+
+- (NSUInteger) hash {
+    return _runningApp.hash + 1;
 }
 
 - (Window*) mainWindow {
