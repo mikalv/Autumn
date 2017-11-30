@@ -10,7 +10,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JS.h"
-#import "DocsWindowController.h"
 #import "ReplWindowController.h"
 
 @implementation Autumn
@@ -25,7 +24,7 @@
 
 + (void) showDocs {
     [NSApp activateIgnoringOtherApps:YES];
-    [[DocsWindowController sharedInstance] showWindow: nil];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: @"https://sdegutis.github.io/Autumn/"]];
 }
 
 + (void) showRepl {

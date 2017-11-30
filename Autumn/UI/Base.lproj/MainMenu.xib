@@ -686,7 +686,7 @@
                         <action selector="runScript:" target="Voe-Tx-rLC" id="byp-n6-EKz"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Show Docs Window" id="9aX-WT-Slx">
+                <menuItem title="Open Docs in Browser" id="9aX-WT-Slx">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showDocsWindow:" target="Voe-Tx-rLC" id="bT5-MV-GkL"/>
