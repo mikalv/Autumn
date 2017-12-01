@@ -13,6 +13,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="enableAccessibilityMenuItem" destination="Gup-rK-y0F" id="3Zx-2a-u7d"/>
+                <outlet property="launchAtLoginMenuItem" destination="sig-Kz-5kI" id="DNG-oh-ArV"/>
                 <outlet property="statusItemMenu" destination="xMP-BV-cjp" id="Unl-Uj-6Vi"/>
             </connections>
         </customObject>
@@ -680,10 +682,17 @@
         </menu>
         <menu id="xMP-BV-cjp">
             <items>
-                <menuItem title="Run User Configs" id="ySN-43-EAT">
+                <menuItem title="Run User Config File" id="ySN-43-EAT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="runScript:" target="Voe-Tx-rLC" id="byp-n6-EKz"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="PTo-hR-uCR"/>
+                <menuItem title="Show REPL Window" id="BKg-Yo-7sP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showREPL:" target="Voe-Tx-rLC" id="abW-5K-kP6"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Open Docs in Browser" id="9aX-WT-Slx">
@@ -692,20 +701,36 @@
                         <action selector="showDocsWindow:" target="Voe-Tx-rLC" id="bT5-MV-GkL"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Show REPL Window" id="BKg-Yo-7sP">
+                <menuItem isSeparatorItem="YES" id="UqB-P4-NvQ"/>
+                <menuItem title="Launch at Login" id="sig-Kz-5kI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="showREPL:" target="Voe-Tx-rLC" id="abW-5K-kP6"/>
+                        <action selector="toggleLaunchAtLogin:" target="Voe-Tx-rLC" id="gfl-Tl-TiK"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="UqB-P4-NvQ"/>
-                <menuItem title="Quit Autumn" id="YSk-Cf-Xca">
+                <menuItem title="Enable Accessibility" id="Gup-rK-y0F">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="enableAccessibility:" target="Voe-Tx-rLC" id="ogb-Xa-2Fr"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Ppi-do-o2K"/>
+                <menuItem title="About AutumnJS" id="4wX-KM-TQB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showCredits:" target="Voe-Tx-rLC" id="Xi1-y4-9E9"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" id="YSk-Cf-Xca">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quitApp:" target="Voe-Tx-rLC" id="NJv-Yf-pAJ"/>
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="w4n-Oc-GhL"/>
+            </connections>
             <point key="canvasLocation" x="6" y="316"/>
         </menu>
     </objects>

@@ -17,6 +17,7 @@
 		9451F2D91FBBE5130084A2FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2D81FBBE5130084A2FD /* main.m */; };
 		9451F2E31FBC94410084A2FD /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E21FBC94410084A2FD /* Window.m */; };
 		9451F2E61FBCB2A70084A2FD /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2E51FBCB2A70084A2FD /* App.m */; };
+		94AFC8A11FD0DB750072C266 /* LoginLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AFC8A01FD0DB750072C266 /* LoginLauncher.m */; };
 		94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B5C1FC7629500C3FDEF /* Alert.m */; };
 		94F36B681FC7A17100C3FDEF /* Autumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B671FC7A17100C3FDEF /* Autumn.m */; };
 		94F8FD091FCF6B08009F5A77 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8FD081FCF6B08009F5A77 /* Math.m */; };
@@ -48,6 +49,8 @@
 		9451F2E21FBC94410084A2FD /* Window.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
 		9451F2E41FBCB2A70084A2FD /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		9451F2E51FBCB2A70084A2FD /* App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
+		94AFC89F1FD0DB750072C266 /* LoginLauncher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginLauncher.h; sourceTree = "<group>"; };
+		94AFC8A01FD0DB750072C266 /* LoginLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLauncher.m; sourceTree = "<group>"; };
 		94F36B5B1FC7629500C3FDEF /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		94F36B5C1FC7629500C3FDEF /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		94F36B661FC7A17100C3FDEF /* Autumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autumn.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				943B01191FBDDC4600EA17A2 /* FnUtils.m */,
 				94F8FD071FCF6B08009F5A77 /* Math.h */,
 				94F8FD081FCF6B08009F5A77 /* Math.m */,
+				94AFC89F1FD0DB750072C266 /* LoginLauncher.h */,
+				94AFC8A01FD0DB750072C266 /* LoginLauncher.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				9402441B1FCE1BA60031DD90 /* Screen.m in Sources */,
 				94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */,
 				94FDB7291FC34C09008F094F /* JS.m in Sources */,
+				94AFC8A11FD0DB750072C266 /* LoginLauncher.m in Sources */,
 				94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */,
 				9451F2E31FBC94410084A2FD /* Window.m in Sources */,
 				94FDB72F1FC5AC11008F094F /* Keyboard.m in Sources */,
