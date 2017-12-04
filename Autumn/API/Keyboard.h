@@ -11,6 +11,8 @@
 
 @protocol JSExport_Keyboard <JSExport>
 
++ (void) setLayoutChangedCallback:(JSValue*)fn;
+
 @end
 
 @interface Keyboard : NSObject <JSExport_Keyboard>

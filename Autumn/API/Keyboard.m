@@ -9,9 +9,9 @@
 #import "Keyboard.h"
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
-#import "JS.h"
 
 static NSMutableDictionary* keyCodes;
+static JSValue* callback;
 
 @implementation Keyboard
 
@@ -25,15 +25,18 @@ static NSMutableDictionary* keyCodes;
 }
 
 + (void) reset {
+    [self setLayoutChangedCallback: nil];
+}
+
++ (void) setLayoutChangedCallback:(JSValue*)fn {
+    callback = fn;
 }
 
 + (void) inputSourceChanged:(NSNotification*)note {
     [self recacheKeycodes];
     
-    JSValue* fn = [JS context][[Keyboard className]][@"layoutChanged"];
-    
-    if (fn.isObject) {
-        [fn callWithArguments:@[]];
+    if (callback.isObject) {
+        [callback callWithArguments:@[]];
     }
 }
 
