@@ -924,13 +924,25 @@ img { max-width: 100%; }
 		<li class="current tsd-kind-class tsd-is-not-exported">
 			<a href="keyboard.html" class="tsd-kind-icon">Keyboard</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<a href="keyboard.html#layoutchanged" class="tsd-kind-icon">layout<wbr>Changed</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="keyboard.html#setlayoutchangedcallback" class="tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback</a>
 				</li>
 			</ul>
 		</li>
 		<li class=" tsd-kind-class tsd-is-not-exported">
-			<a href="win.html" class="tsd-kind-icon">Win</a>
+			<a href="point.html" class="tsd-kind-icon">Point</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="rect.html" class="tsd-kind-icon">Rect</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="screen.html" class="tsd-kind-icon">Screen</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="size.html" class="tsd-kind-icon">Size</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="window.html" class="tsd-kind-icon">Window</a>
 		</li>
 	</ul>
 </nav>
@@ -949,40 +961,55 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section tsd-is-not-exported">
-						<h3>Properties</h3>
+						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="keyboard.html#layoutchanged" class="tsd-kind-icon">layout<wbr>Changed</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="keyboard.html#setlayoutchangedcallback" class="tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-				<a name="layoutchanged" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagStatic">Static</span> layout<wbr>Changed</h3>
-				<div class="tsd-signature tsd-kind-icon">layout<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/8f4d410/Autumn/API/types.d.ts#L45">types.d.ts:45</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter-siganture">
-							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+				<a name="setlayoutchangedcallback" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Layout<wbr>Changed<wbr>Callback</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L61">types.d.ts:61</a></li>
 							</ul>
-							<ul class="tsd-descriptions">
-								<li class="tsd-description">
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>This replaces the previous callback.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>fn: <span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

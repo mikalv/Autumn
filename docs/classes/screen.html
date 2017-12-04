@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Win | AutumnJS.app</title>
+	<title>Screen | AutumnJS.app</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -924,38 +924,71 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-class tsd-is-not-exported">
 			<a href="keyboard.html" class="tsd-kind-icon">Keyboard</a>
 		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="point.html" class="tsd-kind-icon">Point</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="rect.html" class="tsd-kind-icon">Rect</a>
+		</li>
 		<li class="current tsd-kind-class tsd-is-not-exported">
-			<a href="win.html" class="tsd-kind-icon">Win</a>
+			<a href="screen.html" class="tsd-kind-icon">Screen</a>
 			<ul>
-				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<a href="win.html#allwindows" class="tsd-kind-icon">all<wbr>Windows</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#allscreens" class="tsd-kind-icon">all<wbr>Screens</a>
 				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<a href="win.html#focusedwindow" class="tsd-kind-icon">focused<wbr>Window</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#equals" class="tsd-kind-icon">equals</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#focusedscreen" class="tsd-kind-icon">focused<wbr>Screen</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#frame" class="tsd-kind-icon">frame</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#fullframe" class="tsd-kind-icon">full<wbr>Frame</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#name" class="tsd-kind-icon">name</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#nextscreen" class="tsd-kind-icon">next<wbr>Screen</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#previousscreen" class="tsd-kind-icon">previous<wbr>Screen</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#screenid" class="tsd-kind-icon">screen<wbr>Id</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#screentoeast" class="tsd-kind-icon">screen<wbr>ToEast</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#screentonorth" class="tsd-kind-icon">screen<wbr>ToNorth</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#screentosouth" class="tsd-kind-icon">screen<wbr>ToSouth</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a href="screen.html#screentowest" class="tsd-kind-icon">screen<wbr>ToWest</a>
 				</li>
 			</ul>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="size.html" class="tsd-kind-icon">Size</a>
+		</li>
+		<li class=" tsd-kind-class tsd-is-not-exported">
+			<a href="window.html" class="tsd-kind-icon">Window</a>
 		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-comment">
-			<div class="tsd-comment tsd-typography">
-				<div class="lead">
-					<p>Functions for managing any window.</p>
-				</div>
-				<p>To get windows, see <code>Window.focusedWindow</code> and <code>Window.visibleWindows</code>.</p>
-				<p>To get window geometrical attributes, see <code>Window.{frame,size,topleft}</code>.</p>
-				<p>To move and resize windows, see <code>Window.set{frame,size,topleft}</code>.</p>
-				<p>It may be handy to get a window&#39;s app or screen via <code>Window.app</code> and <code>Window.screen</code>.</p>
-				<p>See the <code>Screen</code> class for detailed explanation of how Mjolnir uses window/screen coordinates.</p>
-			</div>
-		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">Win</span>
+					<span class="target">Screen</span>
 				</li>
 			</ul>
 		</section>
@@ -966,8 +999,19 @@ img { max-width: 100%; }
 					<section class="tsd-index-section tsd-is-not-exported">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="win.html#allwindows" class="tsd-kind-icon">all<wbr>Windows</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="win.html#focusedwindow" class="tsd-kind-icon">focused<wbr>Window</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#allscreens" class="tsd-kind-icon">all<wbr>Screens</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#equals" class="tsd-kind-icon">equals</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#focusedscreen" class="tsd-kind-icon">focused<wbr>Screen</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#frame" class="tsd-kind-icon">frame</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#fullframe" class="tsd-kind-icon">full<wbr>Frame</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#name" class="tsd-kind-icon">name</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#nextscreen" class="tsd-kind-icon">next<wbr>Screen</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#previousscreen" class="tsd-kind-icon">previous<wbr>Screen</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#screenid" class="tsd-kind-icon">screen<wbr>Id</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#screentoeast" class="tsd-kind-icon">screen<wbr>ToEast</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#screentonorth" class="tsd-kind-icon">screen<wbr>ToNorth</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#screentosouth" class="tsd-kind-icon">screen<wbr>ToSouth</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="screen.html#screentowest" class="tsd-kind-icon">screen<wbr>ToWest</a></li>
 						</ul>
 					</section>
 				</div>
@@ -975,47 +1019,230 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 			<h2>Methods</h2>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-				<a name="allwindows" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagStatic">Static</span> all<wbr>Windows</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">all<wbr>Windows<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="win.html" class="tsd-signature-type">Win</a><span class="tsd-signature-symbol">[]</span></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="allscreens" class="tsd-anchor"></a>
+				<h3>all<wbr>Screens</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">all<wbr>Screens<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span><span class="tsd-signature-symbol">[]</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/8f4d410/Autumn/API/types.d.ts#L180">types.d.ts:180</a></li>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L254">types.d.ts:254</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Returns handles to every window currently open in no specific order.</p>
-							</div>
-						</div>
-						<h4 class="tsd-returns-title">Returns <a href="win.html" class="tsd-signature-type">Win</a><span class="tsd-signature-symbol">[]</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-				<a name="focusedwindow" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagStatic">Static</span> focused<wbr>Window</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">focused<wbr>Window<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="win.html" class="tsd-signature-type">Win</a></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="equals" class="tsd-anchor"></a>
+				<h3>equals</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/8f4d410/Autumn/API/types.d.ts#L175">types.d.ts:175</a></li>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L257">types.d.ts:257</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Returns the window that currently has focus.</p>
-							</div>
-						</div>
-						<h4 class="tsd-returns-title">Returns <a href="win.html" class="tsd-signature-type">Win</a></h4>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>other: <span class="tsd-signature-type">Screen</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="focusedscreen" class="tsd-anchor"></a>
+				<h3>focused<wbr>Screen</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">focused<wbr>Screen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L255">types.d.ts:255</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="frame" class="tsd-anchor"></a>
+				<h3>frame</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">frame<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="rect.html" class="tsd-signature-type">Rect</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L263">types.d.ts:263</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <a href="rect.html" class="tsd-signature-type">Rect</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="fullframe" class="tsd-anchor"></a>
+				<h3>full<wbr>Frame</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">full<wbr>Frame<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="rect.html" class="tsd-signature-type">Rect</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L262">types.d.ts:262</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <a href="rect.html" class="tsd-signature-type">Rect</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="name" class="tsd-anchor"></a>
+				<h3>name</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L260">types.d.ts:260</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="nextscreen" class="tsd-anchor"></a>
+				<h3>next<wbr>Screen</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">next<wbr>Screen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L265">types.d.ts:265</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="previousscreen" class="tsd-anchor"></a>
+				<h3>previous<wbr>Screen</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">previous<wbr>Screen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L266">types.d.ts:266</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="screenid" class="tsd-anchor"></a>
+				<h3>screen<wbr>Id</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">screen<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L259">types.d.ts:259</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="screentoeast" class="tsd-anchor"></a>
+				<h3>screen<wbr>ToEast</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">screen<wbr>ToEast<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L268">types.d.ts:268</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="screentonorth" class="tsd-anchor"></a>
+				<h3>screen<wbr>ToNorth</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">screen<wbr>ToNorth<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L269">types.d.ts:269</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="screentosouth" class="tsd-anchor"></a>
+				<h3>screen<wbr>ToSouth</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">screen<wbr>ToSouth<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L271">types.d.ts:271</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<a name="screentowest" class="tsd-anchor"></a>
+				<h3>screen<wbr>ToWest</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">screen<wbr>ToWest<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Screen</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/b4fd18b/Autumn/API/types.d.ts#L270">types.d.ts:270</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Screen</span></h4>
 					</li>
 				</ul>
 			</section>

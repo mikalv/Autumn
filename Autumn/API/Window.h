@@ -40,13 +40,14 @@
 - (NSNumber*) isVisible;
 
 - (NSPoint) topLeft;
-- (void) setTopLeft:(NSPoint)thePoint;
-
 - (NSSize) size;
-- (void) setSize:(NSSize)theSize;
-
 - (NSRect) frame;
+
+- (void) setTopLeft:(NSPoint)thePoint;
+- (void) setSize:(NSSize)theSize;
 - (void) setFrame:(NSRect)frame;
+
+- (void) moveToPercentOfScreen:(NSRect)unit;
 
 - (void) close;
 - (void) setFullScreen:(BOOL)shouldBeFullScreen;
@@ -68,8 +69,6 @@
 - (void) focusFiristWindowToNorth;
 - (void) focusFiristWindowToWest;
 - (void) focusFiristWindowToSouth;
-
-- (void) moveToPercentOfScreen:(NSRect)unit;
 
 @end
 
