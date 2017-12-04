@@ -1,273 +1,270 @@
-/**
- * Manipulate AutumnJS.app itself.
- */
-declare class Autumn {
+declare namespace Autumn {
 
-    static quit(): void;
+    function quit(): void;
 
     /**
      * This also resets the JS VM and removes all callbacks.
      */
-    static reloadConfigs(): void;
-    static showDocs(): void;
-    static showRepl(): void;
-    static loadFile(path: string): any;
-
-}
-
-/**
- * Show brief, highly visible messages in the center of your screen.
- */
-declare class Alert {
-
-    static show(
-        msg: string,
-        options?: {
-            duration?: number;
-        }
-    ): void;
-
-}
-
-/**
- * Create custom global keyboard shortcuts.
- */
-declare class Hotkey {
-
-    constructor(options: {
-        key: string;
-        mods: {
-            cmd?: boolean,
-            ctrl?: boolean,
-            alt?: boolean,
-            shift?: boolean
-        };
-        pressed?: () => void;
-        released?: () => void;
-    });
-
-    enable(): boolean;
-    disable(): void;
-
-    equals(other: Hotkey): boolean;
-
-}
-
-declare class Keyboard {
+    function reloadConfigs(): void;
+    function showDocs(): void;
+    function showRepl(): void;
+    function loadFile(path: string): any;
 
     /**
-     * This replaces the previous callback.
+     * Show brief, highly visible messages in the center of your screen.
      */
-    static setLayoutChangedCallback(fn: () => void): void;
+    class Alert {
 
-}
+        static show(
+            msg: string,
+            options?: {
+                duration?: number;
+            }
+        ): void;
 
-/**
- * Manipulate running applications.
- */
-
-declare class App {
-    /**
-     * Returns an app object for the given pid.
-     * @param pid process id of the app
-     */
-    static appForPid(pid: number): App;
+    }
 
     /**
-     * Returns any running apps that have the given bundleID.
-     * @param id Bundle ID, e.g. "com.apple.TextEdit"
+     * Create custom global keyboard shortcuts.
      */
-    static appsForBundleID(id: string): App[];
+    class Hotkey {
+
+        constructor(options: {
+            key: string;
+            mods: {
+                cmd?: boolean,
+                ctrl?: boolean,
+                alt?: boolean,
+                shift?: boolean
+            };
+            pressed?: () => void;
+            released?: () => void;
+        });
+
+        enable(): boolean;
+        disable(): void;
+
+        equals(other: Hotkey): boolean;
+
+    }
+
+    class Keyboard {
+
+        /**
+         * This replaces the previous callback.
+         */
+        static setLayoutChangedCallback(fn: () => void): void;
+
+    }
 
     /**
-     * Returns all currently running apps.
+     * Manipulate running applications.
      */
-    static runningApps(): App[];
+
+    class App {
+        /**
+         * Returns an app object for the given pid.
+         * @param pid process id of the app
+         */
+        static appForPid(pid: number): App;
+
+        /**
+         * Returns any running apps that have the given bundleID.
+         * @param id Bundle ID, e.g. "com.apple.TextEdit"
+         */
+        static appsForBundleID(id: string): App[];
+
+        /**
+         * Returns all currently running apps.
+         */
+        static runningApps(): App[];
+
+        /**
+         * Launches the app with the given name, or activates it if it's already running.
+         * Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
+         * @param name Localized name of the app.
+         */
+        static open(name: string): boolean;
+
+        /**
+         * Checks whether this app object is the same as another.
+         * @param app Another app object.
+         */
+        isEqual(app: App): boolean;
+
+        /**
+         * Returns the main window of the given app, or nil.
+         */
+        mainWindow(): Window;
+
+        /**
+         * Returns all open windows owned by the given app.
+         */
+        allWindows(): Window[];
+
+        /**
+         * Returns only the app's windows that are visible.
+         */
+        visibleWindows(): Window[];
+
+        /**
+         * True if the app has the spinny circle of death.
+         */
+        isUnresponsive(): boolean;
+
+        /**
+         * Returns the localized name of the app (in UTF8).
+         */
+        title(): string;
+
+        /**
+         * Returns the bundle identifier of the app.
+         */
+        bundleID(): string;
+
+        /**
+         * Unhides the app (and all its windows) if it's hidden.
+         */
+        unhide(): boolean;
+
+        /**
+         * Hides the app (and all its windows).
+         */
+        hide(): boolean;
+
+        /**
+         * Tries to terminate the app.
+         */
+        kill(): void;
+
+        /**
+         * Definitely terminates the app.
+         */
+        forceKill(): void;
+
+        /**
+         * Returns whether the app is currently hidden.
+         */
+        isHidden(): boolean;
+
+        /**
+         * Returns the app's process identifier.
+         */
+        pid(): number;
+
+        /**
+         * Returns the string 'dock' if the app is in the dock, 'no-dock' if not, and 'no-gui' if it can't even have GUI elements if it wanted to.
+         */
+        kind(): string;
+
+        /**
+         * Tries to activate the app (make its key window focused) and returns whether it succeeded.
+         * @param allWindows Whether all windows are brought to the front.
+         */
+        activate(allWindows: boolean): boolean;
+
+    }
+
+    class Point {
+        x: number;
+        y: number;
+    }
+
+    class Size {
+        width: number;
+        height: number;
+    }
+
+    class Rect {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+    }
 
     /**
-     * Launches the app with the given name, or activates it if it's already running.
-     * Returns true if it launched or was already launched; otherwise false (presumably only if the app doesn't exist).
-     * @param name Localized name of the app.
+     * Functions for managing any open window.
      */
-    static open(name: string): boolean;
+    class Window {
 
-    /**
-     * Checks whether this app object is the same as another.
-     * @param app Another app object.
-     */
-    isEqual(app: App): boolean;
+        static focusedWindow(): Window;
 
-    /**
-     * Returns the main window of the given app, or nil.
-     */
-    mainWindow(): Window;
+        static allWindows(): Window[];
+        static visibleWindows(): Window[];
+        static orderedWindows(): Window[];
 
-    /**
-     * Returns all open windows owned by the given app.
-     */
-    allWindows(): Window[];
+        static windowForID(id: number): Window;
+        windowID(): number;
 
-    /**
-     * Returns only the app's windows that are visible.
-     */
-    visibleWindows(): Window[];
+        otherWindows(allScreens: boolean): Window[];
 
-    /**
-     * True if the app has the spinny circle of death.
-     */
-    isUnresponsive(): boolean;
+        equals(other: Window): boolean;
 
-    /**
-     * Returns the localized name of the app (in UTF8).
-     */
-    title(): string;
+        title(): string;
+        subrole(): string;
+        role(): string;
 
-    /**
-     * Returns the bundle identifier of the app.
-     */
-    bundleID(): string;
+        app(): App;
 
-    /**
-     * Unhides the app (and all its windows) if it's hidden.
-     */
-    unhide(): boolean;
+        isStandardWindow(): boolean;
+        isFullScreen(): boolean;
+        isMinimized(): boolean;
+        isVisible(): boolean;
 
-    /**
-     * Hides the app (and all its windows).
-     */
-    hide(): boolean;
+        topLeft(): Point;
+        size(): Size;
+        frame(): Rect;
 
-    /**
-     * Tries to terminate the app.
-     */
-    kill(): void;
+        setTopLeft(thePoint: Point): void;
+        setSize(theSize: Size): void;
+        setFrame(frame: Rect): void;
 
-    /**
-     * Definitely terminates the app.
-     */
-    forceKill(): void;
+        moveToPercentOfScreen(unit: Rect): void;
 
-    /**
-     * Returns whether the app is currently hidden.
-     */
-    isHidden(): boolean;
+        close(): void;
+        setFullScreen(shouldBeFullScreen: boolean): void;
+        minimize(): void;
+        unminimize(): void;
+        maximize(): void;
 
-    /**
-     * Returns the app's process identifier.
-     */
-    pid(): number;
+        becomeMain(): void;
+        focus(): void;
 
-    /**
-     * Returns the string 'dock' if the app is in the dock, 'no-dock' if not, and 'no-gui' if it can't even have GUI elements if it wanted to.
-     */
-    kind(): string;
+        screen(): Screen;
 
-    /**
-     * Tries to activate the app (make its key window focused) and returns whether it succeeded.
-     * @param allWindows Whether all windows are brought to the front.
-     */
-    activate(allWindows: boolean): boolean;
+        windowsToEast(): Window[];
+        windowsToNorth(): Window[];
+        windowsToWest(): Window[];
+        windowsToSouth(): Window[];
 
-}
+        focusFiristWindowToEast(): void;
+        focusFiristWindowToNorth(): void;
+        focusFiristWindowToWest(): void;
+        focusFiristWindowToSouth(): void;
 
-declare class Point {
-    x: number;
-    y: number;
-}
+    }
 
-declare class Size {
-    width: number;
-    height: number;
-}
+    class Screen {
 
-declare class Rect {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-}
+        allScreens(): Screen[];
+        focusedScreen(): Screen;
 
-/**
- * Functions for managing any open window.
- */
-declare class Window {
+        equals(other: Screen): boolean;
 
-    static focusedWindow(): Window;
+        screenId(): number;
+        name(): string;
 
-    static allWindows(): Window[];
-    static visibleWindows(): Window[];
-    static orderedWindows(): Window[];
+        fullFrame(): Rect;
+        frame(): Rect;
 
-    static windowForID(id: number): Window;
-    windowID(): number;
+        nextScreen(): Screen;
+        previousScreen(): Screen;
 
-    otherWindows(allScreens: boolean): Window[];
+        screenToEast(): Screen;
+        screenToNorth(): Screen;
+        screenToWest(): Screen;
+        screenToSouth(): Screen;
 
-    equals(other: Window): boolean;
-
-    title(): string;
-    subrole(): string;
-    role(): string;
-
-    app(): App;
-
-    isStandardWindow(): boolean;
-    isFullScreen(): boolean;
-    isMinimized(): boolean;
-    isVisible(): boolean;
-
-    topLeft(): Point;
-    size(): Size;
-    frame(): Rect;
-
-    setTopLeft(thePoint: Point): void;
-    setSize(theSize: Size): void;
-    setFrame(frame: Rect): void;
-
-    moveToPercentOfScreen(unit: Rect): void;
-
-    close(): void;
-    setFullScreen(shouldBeFullScreen: boolean): void;
-    minimize(): void;
-    unminimize(): void;
-    maximize(): void;
-
-    becomeMain(): void;
-    focus(): void;
-
-    screen(): Screen;
-
-    windowsToEast(): Window[];
-    windowsToNorth(): Window[];
-    windowsToWest(): Window[];
-    windowsToSouth(): Window[];
-
-    focusFiristWindowToEast(): void;
-    focusFiristWindowToNorth(): void;
-    focusFiristWindowToWest(): void;
-    focusFiristWindowToSouth(): void;
-
-}
-
-declare class Screen {
-
-    allScreens(): Screen[];
-    focusedScreen(): Screen;
-
-    equals(other: Screen): boolean;
-
-    screenId(): number;
-    name(): string;
-
-    fullFrame(): Rect;
-    frame(): Rect;
-
-    nextScreen(): Screen;
-    previousScreen(): Screen;
-
-    screenToEast(): Screen;
-    screenToNorth(): Screen;
-    screenToWest(): Screen;
-    screenToSouth(): Screen;
+    }
 
 }

@@ -89,8 +89,7 @@ static NSMutableArray<NSString*>* requireStack;
         [self showError:errorMessage location:errorLocation];
     };
     
-    NSArray<Class>* classes = @[[Autumn class],
-                                [Window class],
+    NSArray<Class>* classes = @[[Window class],
                                 [App class],
                                 [Hotkey class],
                                 [Keyboard class],
@@ -98,11 +97,11 @@ static NSMutableArray<NSString*>* requireStack;
                                 [Screen class],
                                 ];
     
-    for (Class cls in classes) {
-        ctx[[cls className]] = cls;
-    }
+    ctx[@"Autumn"] = [Autumn class];
     
-    ctx[@"Win"] = ctx[@"Window"];
+    for (Class cls in classes) {
+        ctx[@"Autumn"][[cls className]] = cls;
+    }
     
     ctx[@"console"][@"log"] = ^{
         NSMutableString* s = [NSMutableString string];
