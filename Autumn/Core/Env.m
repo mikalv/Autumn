@@ -25,6 +25,7 @@
     [Hotkey reset];
     [NotificationManager reset];
     [JS reset];
+    [Hotkey setupWithJS];
 }
 
 @end

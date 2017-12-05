@@ -29,17 +29,13 @@ declare namespace Autumn {
      */
     class Hotkey {
 
-        constructor(options: {
-            key: string;
-            mods: {
-                cmd?: boolean,
-                ctrl?: boolean,
-                alt?: boolean,
-                shift?: boolean
-            };
-            pressed?: () => void;
-            released?: () => void;
-        });
+        static Ctrl: number;
+        static Cmd: number;
+        static Alt: number;
+        static Opt: number;
+        static Shift: number;
+
+        static bind(mods: number, key: string, callback: () => void): Hotkey;
 
         enable(): boolean;
         disable(): void;

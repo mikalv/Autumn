@@ -9,13 +9,13 @@
 #import "Hotkey.h"
 #import "Keyboard.h"
 #import <Carbon/Carbon.h>
+#import "JS.h"
 
 @implementation Hotkey {
     UInt32 _mods;
     UInt32 _keycode;
     UInt32 _uid;
-    JSManagedValue* _pressedFn;
-    JSManagedValue* _releasedFn;
+    JSManagedValue* _callback;
     BOOL _enabled;
     EventHotKeyRef _carbonHotKey;
 }
@@ -59,31 +59,16 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     }
 }
 
-- (instancetype) initWithMap:(JSValue*)spec {
-    if (self = [super init]) {
-        NSString* key = [spec[@"key"] toString];
-        _keycode = [[Keyboard keyCodes][key] unsignedIntValue];
-        
-        JSValue* mods = spec[@"mods"];
-        if ([mods[@"cmd"] toBool])   _mods |= cmdKey;
-        if ([mods[@"ctrl"] toBool])  _mods |= controlKey;
-        if ([mods[@"alt"] toBool])   _mods |= optionKey;
-        if ([mods[@"shift"] toBool]) _mods |= shiftKey;
-        
-        JSValue* pressed = spec[@"pressed"];
-        JSValue* released = spec[@"released"];
-        
-        _pressedFn = pressed.isObject ? [JSManagedValue managedValueWithValue:pressed andOwner:self] : nil;
-        _releasedFn = released.isObject ? [JSManagedValue managedValueWithValue:released andOwner:self] : nil;
-    }
-    return self;
++ (Hotkey*) bind:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback {
+    Hotkey* hotkey = [[Hotkey alloc] init];
+    hotkey->_keycode = [[Keyboard keyCodes][key] unsignedIntValue];
+    hotkey->_mods = mods.intValue;
+    hotkey->_callback = [JSManagedValue managedValueWithValue:callback andOwner:hotkey];
+    return [hotkey enable] ? hotkey : nil;
 }
 
-- (void) runCallback:(BOOL)stateIsPressed {
-    JSManagedValue* fn = stateIsPressed ? _pressedFn : _releasedFn;
-    if (fn) {
-        [fn.value callWithArguments: @[]];
-    }
+- (void) runCallback {
+    [_callback.value callWithArguments: @[]];
 }
 
 - (NSNumber*) enable {
@@ -98,6 +83,15 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     return (err != eventHotKeyExistsErr) ? @YES : @NO;
 }
 
++ (void) setupWithJS {
+    JSValue* this = JS.context[@"Autumn"][[self className]];
+    this[@"Cmd"]   = @(cmdKey);
+    this[@"Ctrl"]  = @(controlKey);
+    this[@"Alt"]   = @(optionKey);
+    this[@"Opt"]   = @(optionKey);
+    this[@"Shift"] = @(shiftKey);
+}
+
 - (void) disable {
     if (!_enabled)
         return;
@@ -109,9 +103,7 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
 
 - (void) dealloc {
     [self disable];
-    
-    [_pressedFn.value.context.virtualMachine removeManagedReference:_pressedFn withOwner:self];
-    [_releasedFn.value.context.virtualMachine removeManagedReference:_releasedFn withOwner:self];
+    [_callback.value.context.virtualMachine removeManagedReference:_callback withOwner:self];
 }
 
 static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerCallRef, EventRef inEvent, void *inUserData) {
@@ -119,7 +111,7 @@ static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerC
     GetEventParameter(inEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(eventID), NULL, &eventID);
     
     Hotkey* hotkey = [Hotkey hotkeyForId: eventID.id];
-    [hotkey runCallback: GetEventKind(inEvent) == kEventHotKeyPressed];
+    [hotkey runCallback];
     
     return noErr;
 }
@@ -129,7 +121,6 @@ static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerC
     
     EventTypeSpec hotKeyPressedSpec[] = {
         {kEventClassKeyboard, kEventHotKeyPressed},
-        {kEventClassKeyboard, kEventHotKeyReleased},
     };
     InstallEventHandler(GetEventDispatcherTarget(),
                         callback,

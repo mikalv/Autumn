@@ -11,7 +11,9 @@
 
 @protocol JSExport_Alert <JSExport>
 
-JSExportAs(show, + (void) show:(NSString*)oneLineMsg options:(JSValue*)options);
+JSExportAs(show,
+           + (void) show:(NSString*)oneLineMsg options:(JSValue*)options
+           );
 
 @end
 

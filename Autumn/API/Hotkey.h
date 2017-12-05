@@ -13,7 +13,9 @@
 
 @protocol JSExport_Hotkey <JSExport>
 
-- (instancetype) initWithMap:(JSValue*)spec;
+JSExportAs(bind,
+           + (Hotkey*) bind:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback
+           );
 
 - (NSNumber*) enable;
 - (void) disable;
@@ -24,6 +26,7 @@
 
 @interface Hotkey : NSObject <JSExport_Hotkey>
 
++ (void) setupWithJS;
 + (void) setupOnce;
 + (void) reset;
 
