@@ -78,8 +78,7 @@
     if (self = [super init]) {
         requireStack = [NSMutableArray array];
         
-        JSVirtualMachine* vm = [[JSVirtualMachine alloc] init];
-        ctx = [[JSContext alloc] initWithVirtualMachine: vm];
+        ctx = [[JSContext alloc] init];
         
         __weak JS* weakSelf = self;
         ctx.exceptionHandler = ^(JSContext *context, JSValue *exception) {
