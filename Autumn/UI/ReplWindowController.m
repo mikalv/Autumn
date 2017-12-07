@@ -8,6 +8,7 @@
 
 #import "ReplWindowController.h"
 #import "JS.h"
+#import "Env.h"
 
 static NSDictionary<NSAttributedStringKey, id>* inputAttrs;
 static NSDictionary<NSAttributedStringKey, id>* outputAttrs;
@@ -84,7 +85,7 @@ static NSDateFormatter* nowFormatter;
     
     [self add: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"\n$ %@\n", input]  attributes:inputAttrs]];
     
-    NSString* output = [JS runString: input];
+    NSString* output = [Env.current.js runString: input];
     
     [self add: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"\n> %@\n", output] attributes:outputAttrs]];
 }

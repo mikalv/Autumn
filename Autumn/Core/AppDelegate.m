@@ -8,9 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "Autumn.h"
+#import "Core.h"
 #import "Env.h"
-#import "JS.h"
 #import "Alert.h"
 #import "LoginLauncher.h"
 
@@ -22,19 +21,19 @@
 }
 
 - (IBAction) quitApp:(id)sender {
-    [Autumn quit];
+    [Core quit];
 }
 
 - (IBAction) runScript:(id)sender {
-    [Autumn reloadConfigs];
+    [Core reloadConfigs];
 }
 
 - (IBAction) showDocsWindow:(id)sender {
-    [Autumn showDocs];
+    [Core showDocs];
 }
 
 - (IBAction) showREPL:(id)sender {
-    [Autumn showRepl];
+    [Core showRepl];
 }
 
 - (IBAction) toggleLaunchAtLogin:(NSMenuItem*)sender {
@@ -83,8 +82,8 @@
     item.menu = statusItemMenu;
     
     [Alert show:@"Loading config..." options: nil];
-    [Env setupOnce];
-    [JS runConfig];
+    
+    [Env reset];
 }
 
 @end

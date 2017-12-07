@@ -355,5 +355,11 @@ cleanup:
                               unit.size.height * screenRect.size.height)];
 }
 
++ (void)startModule:(JSValue *)ctor {
+}
+
++ (void)stopModule {
+}
+
 @end
 

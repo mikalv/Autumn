@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @class Hotkey;
 
@@ -24,10 +24,6 @@ JSExportAs(bind,
 
 @end
 
-@interface Hotkey : NSObject <JSExport_Hotkey>
-
-+ (void) setupWithJS;
-+ (void) setupOnce;
-+ (void) reset;
+@interface Hotkey : NSObject <JSExport_Hotkey, Module>
 
 @end

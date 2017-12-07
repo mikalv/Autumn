@@ -20,7 +20,7 @@
 		94AFC8A11FD0DB750072C266 /* LoginLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AFC8A01FD0DB750072C266 /* LoginLauncher.m */; };
 		94AFC8BC1FD5DA190072C266 /* types.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = 94F8FD1C1FD0920D009F5A77 /* types.d.ts */; };
 		94F36B5E1FC7629500C3FDEF /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B5C1FC7629500C3FDEF /* Alert.m */; };
-		94F36B681FC7A17100C3FDEF /* Autumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B671FC7A17100C3FDEF /* Autumn.m */; };
+		94F36B681FC7A17100C3FDEF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36B671FC7A17100C3FDEF /* Core.m */; };
 		94F8FD091FCF6B08009F5A77 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8FD081FCF6B08009F5A77 /* Math.m */; };
 		94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FDB71E1FC34BA1008F094F /* ReplWindowController.m */; };
 		94FDB7211FC34BA1008F094F /* ReplWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FDB71F1FC34BA1008F094F /* ReplWindowController.xib */; };
@@ -52,10 +52,11 @@
 		9451F2E51FBCB2A70084A2FD /* App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		94AFC89F1FD0DB750072C266 /* LoginLauncher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginLauncher.h; sourceTree = "<group>"; };
 		94AFC8A01FD0DB750072C266 /* LoginLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLauncher.m; sourceTree = "<group>"; };
+		94CDCE231FD9DB5500AB1345 /* Module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
 		94F36B5B1FC7629500C3FDEF /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		94F36B5C1FC7629500C3FDEF /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
-		94F36B661FC7A17100C3FDEF /* Autumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autumn.h; sourceTree = "<group>"; };
-		94F36B671FC7A17100C3FDEF /* Autumn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Autumn.m; sourceTree = "<group>"; };
+		94F36B661FC7A17100C3FDEF /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		94F36B671FC7A17100C3FDEF /* Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
 		94F8FD071FCF6B08009F5A77 /* Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		94F8FD081FCF6B08009F5A77 /* Math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
 		94F8FD1C1FD0920D009F5A77 /* types.d.ts */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = types.d.ts; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				944173EB1FC7E78C00330ABA /* Env.m */,
 				94FDB7271FC34C09008F094F /* JS.h */,
 				94FDB7281FC34C09008F094F /* JS.m */,
+				94CDCE231FD9DB5500AB1345 /* Module.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -100,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				94F8FD1C1FD0920D009F5A77 /* types.d.ts */,
-				94F36B661FC7A17100C3FDEF /* Autumn.h */,
-				94F36B671FC7A17100C3FDEF /* Autumn.m */,
+				94F36B661FC7A17100C3FDEF /* Core.h */,
+				94F36B671FC7A17100C3FDEF /* Core.m */,
 				94F36B5B1FC7629500C3FDEF /* Alert.h */,
 				94F36B5C1FC7629500C3FDEF /* Alert.m */,
 				94FDB72A1FC4E1E0008F094F /* Hotkey.h */,
@@ -251,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FDB72C1FC4E1E0008F094F /* Hotkey.m in Sources */,
-				94F36B681FC7A17100C3FDEF /* Autumn.m in Sources */,
+				94F36B681FC7A17100C3FDEF /* Core.m in Sources */,
 				9402441B1FCE1BA60031DD90 /* Screen.m in Sources */,
 				94FDB7201FC34BA1008F094F /* ReplWindowController.m in Sources */,
 				94FDB7291FC34C09008F094F /* JS.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @class App;
 @class Window;
@@ -72,7 +72,7 @@
 
 @end
 
-@interface Window : NSObject <JSExport_Window>
+@interface Window : NSObject <JSExport_Window, Module>
 
 - (instancetype) initWithElement:(AXUIElementRef)element;
 

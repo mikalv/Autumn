@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @protocol JSExport_Keyboard <JSExport>
 
@@ -15,10 +15,8 @@
 
 @end
 
-@interface Keyboard : NSObject <JSExport_Keyboard>
+@interface Keyboard : NSObject <JSExport_Keyboard, Module>
 
-+ (void) setupOnce;
-+ (void) reset;
 + (NSDictionary<NSString*, NSNumber*>*) keyCodes;
 
 @end

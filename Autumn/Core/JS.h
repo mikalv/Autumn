@@ -11,12 +11,10 @@
 
 @interface JS : NSObject
 
-+ (JSValue*) loadFile:(NSString*)path;
+- (JSValue*) addModule:(id)module;
+- (void) loadUserConfig;
 
-+ (void) runConfig;
-+ (NSString*) runString:(NSString*)str;
-+ (void) reset;
-
-+ (JSContext*) context;
+- (NSString*) runString:(NSString*)str;
+- (JSValue*) loadFile:(NSString*)path;
 
 @end

@@ -137,5 +137,11 @@
 - (Screen*) screenToWest  { return [self firstScreenInDirection: 2]; }
 - (Screen*) screenToSouth { return [self firstScreenInDirection: 3]; }
 
++ (void)startModule:(JSValue *)ctor {
+}
+
++ (void)stopModule {
+}
+
 @end
 

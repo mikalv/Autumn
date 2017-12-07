@@ -15,19 +15,6 @@ static JSValue* callback;
 
 @implementation Keyboard
 
-+ (void) setupOnce {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(inputSourceChanged:)
-                                                 name:NSTextInputContextKeyboardSelectionDidChangeNotification
-                                               object:nil];
-    
-    [self recacheKeycodes];
-}
-
-+ (void) reset {
-    [self setLayoutChangedCallback: nil];
-}
-
 + (void) setLayoutChangedCallback:(JSValue*)fn {
     callback = fn;
 }
@@ -192,6 +179,23 @@ static JSValue* callback;
     keyCodes[@"right"] = @(kVK_RightArrow);
     keyCodes[@"down"] = @(kVK_DownArrow);
     keyCodes[@"up"] = @(kVK_UpArrow);
+}
+
++ (void)startModule:(JSValue *)ctor {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(inputSourceChanged:)
+                                                 name:NSTextInputContextKeyboardSelectionDidChangeNotification
+                                               object:nil];
+    
+    [self recacheKeycodes];
+}
+
++ (void)stopModule {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSTextInputContextKeyboardSelectionDidChangeNotification
+                                                  object:nil];
+    
+    [self setLayoutChangedCallback: nil];
 }
 
 @end

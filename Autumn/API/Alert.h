@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @protocol JSExport_Alert <JSExport>
 
@@ -17,7 +17,7 @@ JSExportAs(show,
 
 @end
 
-@interface Alert : NSWindowController <NSWindowDelegate, JSExport_Alert>
+@interface Alert : NSWindowController <NSWindowDelegate, JSExport_Alert, Module>
 
 + (void) show:(NSString*)oneLineMsg
      duration:(NSNumber*)duration;

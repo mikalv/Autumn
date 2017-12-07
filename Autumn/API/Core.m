@@ -6,20 +6,23 @@
 //  Copyright © 2017 Pen & Paper Software. All rights reserved.
 //
 
-#import "Autumn.h"
+#import "Core.h"
 
 #import <Cocoa/Cocoa.h>
 #import "JS.h"
+#import "Env.h"
 #import "ReplWindowController.h"
 
-@implementation Autumn
+@implementation Core
 
 + (void) quit {
     [NSApp terminate: nil];
 }
 
 + (void) reloadConfigs {
-    [JS runConfig];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [Env reset];
+    });
 }
 
 + (void) showDocs {
@@ -33,7 +36,13 @@
 }
 
 + (JSValue*) loadFile:(NSString*)path {
-    return [JS loadFile: path];
+    return [Env.current.js loadFile: path];
+}
+
++ (void)startModule:(JSValue *)ctor {
+}
+
++ (void)stopModule {
 }
 
 @end

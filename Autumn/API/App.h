@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @class Window;
 @class App;
@@ -43,7 +43,7 @@
 
 @end
 
-@interface App : NSObject <JSExport_App>
+@interface App : NSObject <JSExport_App, Module>
 
 - (BOOL) internal_bringToFront:(BOOL)allWindows;
 

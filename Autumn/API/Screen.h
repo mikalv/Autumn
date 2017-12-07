@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
 @class Screen;
 
@@ -34,6 +34,6 @@
 
 @end
 
-@interface Screen : NSObject <JSExport_Screen>
+@interface Screen : NSObject <JSExport_Screen, Module>
 
 @end

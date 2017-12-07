@@ -190,4 +190,10 @@
 #pragma clang diagnostic pop
 }
 
++ (void)startModule:(JSValue *)ctor {
+}
+
++ (void)stopModule {
+}
+
 @end

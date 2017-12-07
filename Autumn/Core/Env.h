@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JS.h"
 
 @interface Env : NSObject
 
-+ (void) setupOnce;
 + (void) reset;
+
+@property (class, readonly) Env* current;
+
+@property (readonly) JS* js;
 
 @end

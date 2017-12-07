@@ -164,4 +164,10 @@ static NSMutableArray* visibleAlerts;
     [visibleAlerts removeObject: self];
 }
 
++ (void)startModule:(JSValue *)ctor {
+}
+
++ (void)stopModule {
+}
+
 @end

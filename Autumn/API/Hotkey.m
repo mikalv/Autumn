@@ -20,6 +20,7 @@
     EventHotKeyRef _carbonHotKey;
 }
 
+static EventHandlerRef eventHandler;
 static UInt32 hotkeysNextKey;
 static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
 
@@ -53,12 +54,6 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     return hotkeys[@(uid)];
 }
 
-+ (void) reset {
-    for (Hotkey* hotkey in hotkeys.allValues) {
-        [hotkey disable];
-    }
-}
-
 + (Hotkey*) bind:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback {
     Hotkey* hotkey = [[Hotkey alloc] init];
     hotkey->_keycode = [[Keyboard keyCodes][key] unsignedIntValue];
@@ -81,15 +76,6 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     _carbonHotKey = NULL;
     OSStatus err = RegisterEventHotKey(_keycode, _mods, hotKeyID, GetEventDispatcherTarget(), kEventHotKeyExclusive, &_carbonHotKey);
     return (err != eventHotKeyExistsErr) ? @YES : @NO;
-}
-
-+ (void) setupWithJS {
-    JSValue* this = JS.context[@"Autumn"][[self className]];
-    this[@"Cmd"]   = @(cmdKey);
-    this[@"Ctrl"]  = @(controlKey);
-    this[@"Alt"]   = @(optionKey);
-    this[@"Opt"]   = @(optionKey);
-    this[@"Shift"] = @(shiftKey);
 }
 
 - (void) disable {
@@ -116,7 +102,7 @@ static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerC
     return noErr;
 }
 
-+ (void) setupOnce {
++ (void)startModule:(JSValue *)ctor {
     hotkeys = [NSMutableDictionary dictionary];
     
     EventTypeSpec hotKeyPressedSpec[] = {
@@ -127,7 +113,21 @@ static OSStatus callback(EventHandlerCallRef __attribute__ ((unused)) inHandlerC
                         sizeof(hotKeyPressedSpec) / sizeof(EventTypeSpec),
                         hotKeyPressedSpec,
                         NULL,
-                        NULL);
+                        &eventHandler);
+    
+    ctor[@"Cmd"]   = @(cmdKey);
+    ctor[@"Ctrl"]  = @(controlKey);
+    ctor[@"Alt"]   = @(optionKey);
+    ctor[@"Opt"]   = @(optionKey);
+    ctor[@"Shift"] = @(shiftKey);
+}
+
++ (void)stopModule {
+    for (Hotkey* hotkey in hotkeys.allValues) {
+        [hotkey disable];
+    }
+    
+    RemoveEventHandler(eventHandler);
 }
 
 @end

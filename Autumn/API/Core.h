@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "Module.h"
 
-@protocol JSExport_Autumn <JSExport>
+@protocol JSExport_Core <JSExport>
 
 + (void) quit;
 + (void) reloadConfigs;
@@ -20,6 +20,6 @@
 
 @end
 
-@interface Autumn : NSObject <JSExport_Autumn>
+@interface Core : NSObject <JSExport_Core, Module>
 
 @end
