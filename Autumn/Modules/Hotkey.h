@@ -13,8 +13,8 @@
 
 @protocol JSExport_Hotkey <JSExport>
 
-JSExportAs(bind,
-           + (Hotkey*) bind:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback
+JSExportAs(create,
+           + (Hotkey*) create:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback
            );
 
 - (NSNumber*) enable;

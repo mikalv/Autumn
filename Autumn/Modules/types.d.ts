@@ -50,7 +50,8 @@ declare namespace Autumn {
     static Opt: number;
     static Shift: number;
 
-    static bind(mods: number, key: string, callback: () => void): Hotkey;
+    /** This creates and enables it. You don't need to keep a reference to it, but you can. */
+    static create(mods: number, key: string, callback: () => void): Hotkey;
 
     enable(): boolean;
     disable(): void;

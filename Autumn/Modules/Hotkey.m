@@ -54,7 +54,7 @@ static NSMutableDictionary<NSNumber*, Hotkey*>* hotkeys;
     return hotkeys[@(uid)];
 }
 
-+ (Hotkey*) bind:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback {
++ (Hotkey*) create:(NSNumber*)mods key:(NSString*)key callback:(JSValue*)callback {
     Hotkey* hotkey = [[Hotkey alloc] init];
     hotkey->_keycode = [[Keyboard keyCodes][key] unsignedIntValue];
     hotkey->_mods = mods.intValue;
