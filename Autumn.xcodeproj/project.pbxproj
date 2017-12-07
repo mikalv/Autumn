@@ -10,7 +10,7 @@
 		9402441B1FCE1BA60031DD90 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9402441A1FCE1BA60031DD90 /* Screen.m */; };
 		943B011A1FBDDC4600EA17A2 /* FnUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 943B01191FBDDC4600EA17A2 /* FnUtils.m */; };
 		944173EC1FC7E78C00330ABA /* Env.m in Sources */ = {isa = PBXBuildFile; fileRef = 944173EB1FC7E78C00330ABA /* Env.m */; };
-		944173F21FC8846200330ABA /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 944173F11FC8846200330ABA /* NotificationManager.m */; };
+		944173F21FC8846200330ABA /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 944173F11FC8846200330ABA /* Notification.m */; };
 		9451F2D11FBBE5130084A2FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451F2D01FBBE5130084A2FD /* AppDelegate.m */; };
 		9451F2D31FBBE5130084A2FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D21FBBE5130084A2FD /* Assets.xcassets */; };
 		9451F2D61FBBE5130084A2FD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9451F2D41FBBE5130084A2FD /* MainMenu.xib */; };
@@ -36,8 +36,8 @@
 		943B01191FBDDC4600EA17A2 /* FnUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FnUtils.m; sourceTree = "<group>"; };
 		944173EA1FC7E78C00330ABA /* Env.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Env.h; sourceTree = "<group>"; };
 		944173EB1FC7E78C00330ABA /* Env.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Env.m; sourceTree = "<group>"; };
-		944173F01FC8846200330ABA /* NotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
-		944173F11FC8846200330ABA /* NotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
+		944173F01FC8846200330ABA /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		944173F11FC8846200330ABA /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		9451F2CC1FBBE5130084A2FD /* Autumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9451F2CF1FBBE5130084A2FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9451F2D01FBBE5130084A2FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,8 +87,6 @@
 			children = (
 				9451F2CF1FBBE5130084A2FD /* AppDelegate.h */,
 				9451F2D01FBBE5130084A2FD /* AppDelegate.m */,
-				944173F01FC8846200330ABA /* NotificationManager.h */,
-				944173F11FC8846200330ABA /* NotificationManager.m */,
 				944173EA1FC7E78C00330ABA /* Env.h */,
 				944173EB1FC7E78C00330ABA /* Env.m */,
 				94FDB7271FC34C09008F094F /* JS.h */,
@@ -116,6 +114,8 @@
 				9451F2E21FBC94410084A2FD /* Window.m */,
 				940244191FCE1BA60031DD90 /* Screen.h */,
 				9402441A1FCE1BA60031DD90 /* Screen.m */,
+				944173F01FC8846200330ABA /* Notification.h */,
+				944173F11FC8846200330ABA /* Notification.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 				94F8FD091FCF6B08009F5A77 /* Math.m in Sources */,
 				9451F2D91FBBE5130084A2FD /* main.m in Sources */,
 				9451F2D11FBBE5130084A2FD /* AppDelegate.m in Sources */,
-				944173F21FC8846200330ABA /* NotificationManager.m in Sources */,
+				944173F21FC8846200330ABA /* Notification.m in Sources */,
 				944173EC1FC7E78C00330ABA /* Env.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,16 @@
 declare namespace Autumn {
 
+  class Notification {
+
+    static post(options: {
+      title: string,
+      subtitle?: string,
+      body: string,
+      clicked: () => void,
+    }): void;
+
+  }
+
   class Core {
 
     static quit(): void;
@@ -268,5 +279,3 @@ declare namespace Autumn {
   }
 
 }
-
-

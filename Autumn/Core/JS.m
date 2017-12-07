@@ -15,7 +15,7 @@
 #import "Core.h"
 #import "Screen.h"
 #import "Env.h"
-#import "NotificationManager.h"
+#import "Notification.h"
 #import "ReplWindowController.h"
 
 @implementation JS {
@@ -59,16 +59,13 @@
     note.subtitle = errorMessage;
     note.informativeText = errorLocation;
     
-    [NotificationManager deliverNotification:note
-                                     clicked:^{
-                                         [[ReplWindowController sharedInstance] showWindow: nil];
-                                     }
-                                   forceShow:^BOOL{
-                                       return !(NSApp.isActive
-                                                && [ReplWindowController sharedInstance].windowLoaded
-                                                && [ReplWindowController sharedInstance].window.isKeyWindow);
-                                   }
-                                  resettable:NO];
+    [Notification deliverNotification:note
+                              clicked:^{
+                                  [[ReplWindowController sharedInstance] showWindow: nil];
+                              }
+                            forceShow:!(NSApp.isActive
+                                        && [ReplWindowController sharedInstance].windowLoaded
+                                        && [ReplWindowController sharedInstance].window.isKeyWindow)];
 }
 
 - (void) showErrorFromException:(JSValue*)exception {

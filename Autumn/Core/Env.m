@@ -15,8 +15,7 @@
 #import "App.h"
 #import "Window.h"
 #import "Screen.h"
-
-#import "NotificationManager.h"
+#import "Notification.h"
 
 #import "JS.h"
 
@@ -41,7 +40,8 @@ static Env* env;
                  [Keyboard class],
                  [App class],
                  [Window class],
-                 [Screen class]];
+                 [Screen class],
+                 [Notification class]];
 }
 
 - (void) start {
@@ -59,16 +59,12 @@ static Env* env;
     for (id<Module> module in [self modules]) {
         [module stopModule];
     }
-    
-    [NotificationManager setupOnce];
 }
 
 + (void) reset {
     [env stop];
     env = [[Env alloc] init];
     [env start];
-    
-    [NotificationManager reset];
 }
 
 @end
