@@ -96,7 +96,7 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		944173EE1FC8704100330ABA /* API */ = {
+		944173EE1FC8704100330ABA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				94F8FD1C1FD0920D009F5A77 /* types.d.ts */,
@@ -117,7 +117,7 @@
 				944173F01FC8846200330ABA /* Notification.h */,
 				944173F11FC8846200330ABA /* Notification.m */,
 			);
-			path = API;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		944173EF1FC8704F00330ABA /* UI */ = {
@@ -152,7 +152,7 @@
 			children = (
 				944173EF1FC8704F00330ABA /* UI */,
 				944173ED1FC8702A00330ABA /* Core */,
-				944173EE1FC8704100330ABA /* API */,
+				944173EE1FC8704100330ABA /* Modules */,
 				94F8FD0A1FD0875D009F5A77 /* Helpers */,
 				9451F2D21FBBE5130084A2FD /* Assets.xcassets */,
 				9451F2D71FBBE5130084A2FD /* Info.plist */,
