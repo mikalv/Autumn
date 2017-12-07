@@ -107,8 +107,4 @@
     return ns[name];
 }
 
-- (void) loadUserConfig {
-    [self loadFile: @"~/.autumnjs/init.js".stringByStandardizingPath];
-}
-
 @end

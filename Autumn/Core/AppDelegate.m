@@ -73,7 +73,16 @@
     AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
 }
 
+- (void) showFirstTimeDialogIfNeeded {
+    if ([[NSFileManager defaultManager] fileExistsAtPath: Env.userConfigPath])
+        return;
+    
+    // TODO: show UI
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [self showFirstTimeDialogIfNeeded];
+    
     [self maybeEnableAccessibility];
     
     NSStatusBar* bar = [NSStatusBar systemStatusBar];

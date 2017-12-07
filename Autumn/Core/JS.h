@@ -12,7 +12,6 @@
 @interface JS : NSObject
 
 - (JSValue*) addModule:(id)module;
-- (void) loadUserConfig;
 
 - (NSString*) runString:(NSString*)str;
 - (JSValue*) loadFile:(NSString*)path;

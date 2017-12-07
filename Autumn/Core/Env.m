@@ -52,7 +52,7 @@ static Env* env;
         [module startModule: moduleNamespace];
     }
     
-    [_js loadUserConfig];
+    [_js loadFile: Env.userConfigPath];
 }
 
 - (void) stop {
@@ -65,6 +65,10 @@ static Env* env;
     [env stop];
     env = [[Env alloc] init];
     [env start];
+}
+
++ (NSString*) userConfigPath {
+    return @"~/.autumnjs/init.js".stringByStandardizingPath;
 }
 
 @end

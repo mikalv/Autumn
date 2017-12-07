@@ -11,6 +11,8 @@
 
 @interface Env : NSObject
 
++ (NSString*) userConfigPath;
+
 + (void) reset;
 
 @property (class, readonly) Env* current;
