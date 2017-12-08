@@ -11,7 +11,7 @@ Benefits over other macOS window managers:
 * IDE autocompletion and documentation available via TypeScript `.d.ts` file
 * Stable API
 
-[Full API documentation](sdegutis.github.io/Autumn/)
+[Full API documentation](http://sdegutis.github.io/Autumn/)
 
 Examples:
 ~~~javascript
