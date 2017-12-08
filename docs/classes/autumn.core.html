@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Keyboard | AutumnJS.app</title>
+	<title>Core | AutumnJS.app</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -915,19 +915,31 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 			<a href="autumn.app.html" class="tsd-kind-icon">App</a>
 		</li>
-		<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
+		<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 			<a href="autumn.core.html" class="tsd-kind-icon">Core</a>
+			<ul>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="autumn.core.html#loadfile" class="tsd-kind-icon">load<wbr>File</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="autumn.core.html#quit" class="tsd-kind-icon">quit</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="autumn.core.html#reloadconfigs" class="tsd-kind-icon">reload<wbr>Configs</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="autumn.core.html#showdocs" class="tsd-kind-icon">show<wbr>Docs</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<a href="autumn.core.html#showrepl" class="tsd-kind-icon">show<wbr>Repl</a>
+				</li>
+			</ul>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 			<a href="autumn.hotkey.html" class="tsd-kind-icon">Hotkey</a>
 		</li>
-		<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
+		<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 			<a href="autumn.keyboard.html" class="tsd-kind-icon">Keyboard</a>
-			<ul>
-				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<a href="autumn.keyboard.html#setlayoutchangedcallback" class="tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback</a>
-				</li>
-			</ul>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 			<a href="autumn.notification.html" class="tsd-kind-icon">Notification</a>
@@ -955,7 +967,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">Keyboard</span>
+					<span class="target">Core</span>
 				</li>
 			</ul>
 		</section>
@@ -966,7 +978,11 @@ img { max-width: 100%; }
 					<section class="tsd-index-section tsd-is-not-exported">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.keyboard.html#setlayoutchangedcallback" class="tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.core.html#loadfile" class="tsd-kind-icon">load<wbr>File</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.core.html#quit" class="tsd-kind-icon">quit</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.core.html#reloadconfigs" class="tsd-kind-icon">reload<wbr>Configs</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.core.html#showdocs" class="tsd-kind-icon">show<wbr>Docs</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported"><a href="autumn.core.html#showrepl" class="tsd-kind-icon">show<wbr>Repl</a></li>
 						</ul>
 					</section>
 				</div>
@@ -975,41 +991,97 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-				<a name="setlayoutchangedcallback" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Layout<wbr>Changed<wbr>Callback</h3>
+				<a name="loadfile" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> load<wbr>File</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">set<wbr>Layout<wbr>Changed<wbr>Callback<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">load<wbr>File<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L68">types.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L24">types.ts:24</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>path: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+				<a name="quit" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> quit</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">quit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L16">types.ts:16</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+				<a name="reloadconfigs" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> reload<wbr>Configs</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">reload<wbr>Configs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L21">types.ts:21</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>This replaces the previous callback.</p>
+								<p>This also resets the JS VM and removes all callbacks.</p>
 							</div>
 						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>fn: <span class="tsd-signature-type">function</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-siganture">
-										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+				<a name="showdocs" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> show<wbr>Docs</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">show<wbr>Docs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L22">types.ts:22</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+				<a name="showrepl" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> show<wbr>Repl</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">show<wbr>Repl<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sdegutis/Autumn/blob/6790b2a/Autumn/Modules/types.ts#L23">types.ts:23</a></li>
+							</ul>
+						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
