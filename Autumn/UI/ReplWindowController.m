@@ -49,7 +49,7 @@ static NSDateFormatter* nowFormatter;
 }
 
 - (NSNibName) windowNibName {
-    return @"ReplWindowController";
+    return [self className];
 }
 
 - (void) windowDidLoad {
