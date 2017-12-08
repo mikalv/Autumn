@@ -48,9 +48,8 @@
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification: note.original];
 }
 
-- (void) reset {
+- (void) removeNotifications {
     for (Notification* note in notes.allValues) {
-        NSLog(@"removing %@", note);
         [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification: note.original];
     }
     
@@ -98,11 +97,15 @@
                     forceShow:YES];
 }
 
++ (void) removeNotifications {
+    [[NotificationManager sharedManager] removeNotifications];
+}
+
 + (void)startModule:(JSValue *)ctor {
 }
 
 + (void)stopModule {
-    [[NotificationManager sharedManager] reset];
+    [[NotificationManager sharedManager] removeNotifications];
 }
 
 @end

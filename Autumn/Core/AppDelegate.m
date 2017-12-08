@@ -12,6 +12,7 @@
 #import "Env.h"
 #import "Alert.h"
 #import "LoginLauncher.h"
+#import "Notification.h"
 
 @implementation AppDelegate {
     NSStatusItem* item;
@@ -93,6 +94,10 @@
     [Alert show:@"Loading config..." options: nil];
     
     [Env reset];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
+    [Notification removeNotifications];
 }
 
 @end

@@ -21,4 +21,6 @@
                      clicked:(void(^)(void))clicked
                    forceShow:(BOOL)forceShow;
 
++ (void) removeNotifications;
+
 @end
