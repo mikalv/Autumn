@@ -12,7 +12,9 @@
 #import "Env.h"
 #import "Alert.h"
 #import "LoginLauncher.h"
+#import "SetupWindowController.h"
 #import "Notification.h"
+#import "Accessibility.h"
 
 @implementation AppDelegate {
     NSStatusItem* item;
@@ -41,8 +43,12 @@
     [LoginLauncher setEnabled: sender.state != NSOnState];
 }
 
+- (IBAction) showWelcomeWindow:(id)sender {
+    [SetupWindowController show];
+}
+
 - (IBAction) enableAccessibility:(id)sender {
-    [self maybeEnableAccessibility];
+    [Accessibility openPanel];
 }
 
 - (IBAction) showCredits:(id)sender {
@@ -52,7 +58,7 @@
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuItem {
     if (menuItem == enableAccessibilityMenuItem) {
-        return ![self isAccessibilityEnabled];
+        return !Accessibility.sharedAccessibility.enabled;
     }
     return YES;
 }
@@ -60,38 +66,31 @@
 - (void)menuWillOpen:(NSMenu *)menu {
     launchAtLoginMenuItem.state = [LoginLauncher isEnabled] ? NSOnState : NSOffState;
     
-    BOOL accessibilityEnabled = [self isAccessibilityEnabled];
+    BOOL accessibilityEnabled = Accessibility.sharedAccessibility.enabled;
     enableAccessibilityMenuItem.image = [NSImage imageNamed: accessibilityEnabled ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable];
     enableAccessibilityMenuItem.title = accessibilityEnabled ? @"Accessibility is enabled" : @"Enable Accessibility";
 }
 
-- (BOOL) isAccessibilityEnabled {
-    return AXIsProcessTrustedWithOptions(NULL);
-}
-
-- (void) maybeEnableAccessibility {
-    NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
-    AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
-}
-
-- (void) showFirstTimeDialogIfNeeded {
+- (BOOL) showSetupWindowIfNeeded {
     if ([[NSFileManager defaultManager] fileExistsAtPath: Env.userConfigPath])
-        return;
+        return NO;
     
-    // TODO: show UI
+    [SetupWindowController show];
+    
+    return YES;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self showFirstTimeDialogIfNeeded];
-    
-    [self maybeEnableAccessibility];
-    
     NSStatusBar* bar = [NSStatusBar systemStatusBar];
     item = [bar statusItemWithLength: NSSquareStatusItemLength];
     item.image = [NSImage imageNamed:@"StatusIcon"];
     item.menu = statusItemMenu;
     
-    [Alert show:@"Loading config..." options: nil];
+    [Accessibility openPanel];
+    
+    if (![self showSetupWindowIfNeeded]) {
+        [Alert show:@"Loading config..." options: nil];
+    }
     
     [Env reset];
 }

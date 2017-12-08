@@ -15,6 +15,8 @@
 
 + (void) reset;
 
++ (void) copySampleConfigs;
+
 @property (class, readonly) Env* current;
 
 @property (readonly) JS* js;

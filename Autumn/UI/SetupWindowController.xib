@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SetupWindowController">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Welcome to AutumnJS.app" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="355"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="327"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-VU-XUL">
+                        <rect key="frame" x="80" y="20" width="321" height="287"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Exw-em-He9">
+                                <rect key="frame" x="-2" y="256" width="303" height="31"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Welcome to AutumnJS.app" id="4R9-jO-MAA">
+                                    <font key="font" metaFont="systemLight" size="26"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="iLJ-Wp-chl">
+                                <rect key="frame" x="0.0" y="245" width="321" height="5"/>
+                            </box>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="j6z-Y4-sMt">
+                                <rect key="frame" x="0.0" y="219" width="313" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="afk-Ff-dAb"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vNl-8G-jNF">
+                                <rect key="frame" x="-2" y="194" width="325" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1. Most API functionality needs Accessibility enabled." id="Fgb-CS-BOF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHg-cn-04A">
+                                <rect key="frame" x="14" y="158" width="182" height="32"/>
+                                <buttonCell key="cell" type="push" title="Enable Accessibility" bezelStyle="rounded" image="NSStatusAvailable" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V7w-bA-yZQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="enableAccessibility:" target="-2" id="jHH-15-E7N"/>
+                                    <binding destination="-2" name="enabled" keyPath="self.accessibility.enabled" id="qL6-GS-Ivn">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="-2" name="image" keyPath="self.accessibility.enabled" id="J1r-Ff-hEG">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">AccessibilityEnabledImageValueTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="-2" name="title" keyPath="self.accessibility.enabled" previousBinding="J1r-Ff-hEG" id="vLY-ba-peo">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">AccessibilityEnabledTitleValueTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="zhn-kR-ugf">
+                                <rect key="frame" x="0.0" y="137" width="313" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="J9j-jq-wJj"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzX-ED-WsV">
+                                <rect key="frame" x="-2" y="112" width="273" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2. Your configs are loaded from ~/.autumnjs/" id="HUn-TM-BbX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51D-SU-r0s">
+                                <rect key="frame" x="14" y="76" width="262" height="32"/>
+                                <buttonCell key="cell" type="push" title="Copy sample configs to ~/.autumnjs/" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="abN-go-Se0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startWithSampleConfigs:" target="-2" id="fGA-6K-ORd"/>
+                                    <binding destination="-2" name="enabled" keyPath="self.canCopySampleConfigs" id="lL9-3j-uik"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xx8-3x-ZNK">
+                                <rect key="frame" x="0.0" y="55" width="313" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="fRo-MW-4hf"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mbx-UD-P2y">
+                                <rect key="frame" x="-2" y="30" width="316" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="3. The rest of the GUI lives in this menu icon above:" id="Mmw-sS-c8u">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76G-b6-ngM">
+                                <rect key="frame" x="20" y="0.0" width="146" height="22"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uyc-eD-9b0">
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="j1b-7q-XMD"/>
+                                            <constraint firstAttribute="width" secondItem="Uyc-eD-9b0" secondAttribute="height" id="yq5-qe-Pod"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="StatusIcon" id="0LM-tC-lbg"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8gB-Bt-yEG">
+                                        <rect key="frame" x="28" y="3" width="120" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="←  It looks like this." id="QrH-ZS-7Ch">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="Uyc-eD-9b0" secondAttribute="height" id="4PA-fQ-1n6"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="76G-b6-ngM" firstAttribute="leading" secondItem="Mbx-UD-P2y" secondAttribute="leading" constant="20" id="AmK-72-KMr"/>
+                            <constraint firstItem="51D-SU-r0s" firstAttribute="leading" secondItem="jzX-ED-WsV" secondAttribute="leading" constant="20" id="CWp-ly-juq"/>
+                            <constraint firstItem="iLJ-Wp-chl" firstAttribute="width" secondItem="lQp-VU-XUL" secondAttribute="width" id="IJ5-0b-ahd"/>
+                            <constraint firstItem="sHg-cn-04A" firstAttribute="leading" secondItem="vNl-8G-jNF" secondAttribute="leading" constant="20" id="iju-6M-aV2"/>
+                        </constraints>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lQp-VU-XUL" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="7bG-ST-yps"/>
+                    <constraint firstAttribute="bottom" secondItem="lQp-VU-XUL" secondAttribute="bottom" constant="20" id="Atr-oa-69D"/>
+                    <constraint firstItem="lQp-VU-XUL" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="I4i-Vp-BRO"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="StatusIcon" width="22" height="22"/>
+    </resources>
+</document>

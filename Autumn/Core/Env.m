@@ -71,4 +71,31 @@ static Env* env;
     return @"~/.autumnjs/init.js".stringByStandardizingPath;
 }
 
++ (void) copySampleConfigs {
+    NSString* configDir = @"~/.autumnjs/".stringByStandardizingPath;
+    NSString* configInFile = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"js"];
+    NSString* configOutFile = [configDir stringByAppendingPathComponent: @"init.js"];
+    
+    NSString* typingInFile = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"ts"];
+    NSString* typingOutFile = [configDir stringByAppendingPathComponent: @"/node_modules/@types/autumnjs/index.d.ts"];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath: typingOutFile.stringByDeletingLastPathComponent
+                              withIntermediateDirectories: YES
+                                               attributes: nil
+                                                    error: NULL];
+    
+    [[NSFileManager defaultManager] copyItemAtPath: typingInFile
+                                            toPath: typingOutFile
+                                             error: NULL];
+    
+    [[NSFileManager defaultManager] copyItemAtPath: configInFile
+                                            toPath: configOutFile
+                                             error: NULL];
+    
+    [[NSWorkspace sharedWorkspace] selectFile: configOutFile
+                     inFileViewerRootedAtPath: configDir];
+    
+    [self reset];
+}
+
 @end
